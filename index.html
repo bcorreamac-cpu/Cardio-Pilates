@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioPilates Apoquindo — Wellness & Fitness Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════
+           RESET & VARIABLES
+           ═══════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --fucsia: #e91e8c;
+            --fucsia-dark: #c4177a;
+            --fucsia-light: #ff4da6;
+            --white: #ffffff;
+            --gray-dark: #1a1a2e;
+            --gray-medium: #2d2d44;
+            --gray-light: #f5f5fa;
+            --gray-text: #6b6b80;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gray-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 100px 0; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--gray-dark);
+            margin-bottom: 12px;
+        }
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .section-title .accent-line {
+            width: 60px;
+            height: 4px;
+            background: var(--fucsia);
+            border-radius: 2px;
+            margin: 16px auto 0;
+        }
+
+        /* ═══════════════════════════════════════
+           1. NAVBAR
+           ═══════════════════════════════════════ */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: var(--transition);
+        }
+        .navbar.scrolled {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 12px 0;
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        .navbar .logo span { color: var(--fucsia-light); }
+        .navbar.scrolled .logo { color: var(--gray-dark); }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--fucsia);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .navbar.scrolled .nav-links a { color: var(--gray-dark); }
+        .nav-links .btn-cta-nav {
+            background: var(--fucsia);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .nav-links .btn-cta-nav::after { display: none; }
+        .nav-links .btn-cta-nav:hover {
+            background: var(--fucsia-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233,30,140,0.4);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px; height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        .navbar.scrolled .hamburger span { background: var(--gray-dark); }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+        /* ═══════════════════════════════════════
+           2. HERO
+           ═══════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1920&q=80') center/cover no-repeat;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26,26,46,0.85) 0%, rgba(233,30,140,0.3) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 780px;
+            padding: 0 24px;
+            animation: fadeInUp 1s ease forwards;
+        }
+        .hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 em {
+            font-style: normal;
+            color: var(--fucsia-light);
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--fucsia);
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            background: var(--fucsia-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(233,30,140,0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════
+           3. BENEFICIOS
+           ═══════════════════════════════════════ */
+        .beneficios { background: var(--gray-light); }
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+        .beneficio-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 28px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .beneficio-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .beneficio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .beneficio-card .icon {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, var(--fucsia), var(--fucsia-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.6rem;
+            color: var(--white);
+        }
+        .beneficio-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .beneficio-card p {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════════
+           4. PLANES / TARIFAS
+           ═══════════════════════════════════════ */
+        .planes { background: var(--white); }
+        .planes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .plan-card {
+            border-radius: var(--radius);
+            padding: 48px 36px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+            border: 2px solid #eee;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .plan-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .plan-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .plan-card.featured {
+            border-color: var(--fucsia);
+            background: linear-gradient(180deg, rgba(233,30,140,0.03) 0%, var(--white) 100%);
+        }
+        .plan-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--fucsia);
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .plan-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .plan-price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--fucsia);
+            margin: 16px 0;
+        }
+        .plan-price small {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            font-weight: 400;
+            display: block;
+            margin-top: 4px;
+        }
+        .plan-features {
+            text-align: left;
+            margin: 24px 0 32px;
+        }
+        .plan-features li {
+            padding: 8px 0;
+            font-size: 0.92rem;
+            color: var(--gray-text);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .plan-features li i {
+            color: var(--fucsia);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        .plan-card .btn-primary { width: 100%; justify-content: center; }
+        .planes-note {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 0.9rem;
+            color: var(--gray-text);
+        }
+        .planes-note i { color: var(--fucsia); margin-right: 6px; }
+
+        /* ═══════════════════════════════════════
+           5. ACTIVIDADES
+           ═══════════════════════════════════════ */
+        .actividades { background: var(--gray-light); }
+        .actividades-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .actividad-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: default;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .actividad-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .actividad-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-bottom: 3px solid var(--fucsia);
+        }
+        .actividad-item i {
+            font-size: 2rem;
+            color: var(--fucsia);
+            margin-bottom: 12px;
+        }
+        .actividad-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════
+           6. TESTIMONIOS
+           ═══════════════════════════════════════ */
+        .testimonios { background: var(--white); }
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .testimonio-card {
+            background: var(--gray-light);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .testimonio-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .testimonio-card:hover { box-shadow: var(--shadow-lg); }
+        .testimonio-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .testimonio-avatar {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--fucsia), var(--fucsia-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .testimonio-info h4 { font-size: 1rem; font-weight: 600; }
+        .testimonio-stars { color: #ffc107; font-size: 0.85rem; }
+        .testimonio-card p {
+            font-size: 0.92rem;
+            color: var(--gray-text);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .testimonio-card p::before { content: '\201C'; font-size: 1.2rem; }
+        .testimonio-card p::after { content: '\201D'; font-size: 1.2rem; }
+
+        /* ═══════════════════════════════════════
+           7. HORARIOS + MAPA
+           ═══════════════════════════════════════ */
+        .horarios { background: var(--gray-light); }
+        .horarios-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .horarios-info {
+            opacity: 0; transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+        .horarios-info.visible { opacity: 1; transform: translateX(0); }
+        .horarios-tabla {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 28px;
+        }
+        .horarios-tabla .tabla-header {
+            background: var(--gray-dark);
+            color: var(--white);
+            padding: 16px 24px;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .horario-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+        .horario-row:last-child { border-bottom: none; }
+        .horario-row .dia { font-weight: 600; }
+        .horario-row .hora { color: var(--fucsia); font-weight: 500; }
+        .contacto-directo { margin-top: 8px; }
+        .contacto-directo .item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            color: var(--gray-text);
+        }
+        .contacto-directo .item i {
+            color: var(--fucsia);
+            width: 20px;
+            text-align: center;
+        }
+        .mapa-container {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+            min-height: 400px;
+            opacity: 0; transform: translateX(30px);
+            transition: all 0.6s ease;
+        }
+        .mapa-container.visible { opacity: 1; transform: translateX(0); }
+        .mapa-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: none;
+        }
+
+        /* ═══════════════════════════════════════
+           8. CTA CLASE GRATIS
+           ═══════════════════════════════════════ */
+        .cta-clase {
+            background: linear-gradient(135deg, var(--fucsia) 0%, var(--fucsia-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .cta-clase h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .cta-clase > .container > p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .form-clase {
+            display: flex;
+            gap: 14px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .form-clase input {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        .form-clase input:focus {
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+        }
+        .form-clase input::placeholder { color: #aaa; }
+        .btn-form {
+            background: var(--gray-dark);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .btn-form:hover {
+            background: var(--gray-medium);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* ═══════════════════════════════════════
+           9. FOOTER
+           ═══════════════════════════════════════ */
+        .footer {
+            background: var(--gray-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .footer-brand .logo span { color: var(--fucsia-light); }
+        .footer-brand .slogan {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        .footer-social a {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        .footer-social a:hover {
+            background: var(--fucsia);
+            transform: translateY(-3px);
+        }
+        .footer h4 {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            display: block;
+            padding: 4px 0;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--fucsia-light); padding-left: 6px; }
+        .footer-contact .item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+        }
+        .footer-contact .item i {
+            color: var(--fucsia-light);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        .footer-apps {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .footer-apps a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        .footer-apps a:hover { background: rgba(255,255,255,0.2); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* ═══════════════════════════════════════
+           10. WHATSAPP FLOTANTE
+           ═══════════════════════════════════════ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 60px; height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+        }
+        .whatsapp-float i { color: var(--white); font-size: 1.8rem; }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); }
+        }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
+            .actividades-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--gray-dark);
+                flex-direction: column;
+                padding: 100px 40px 40px;
+                gap: 24px;
+                transition: var(--transition);
+                box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a { color: rgba(255,255,255,0.85) !important; font-size: 1.05rem; }
+            .navbar.scrolled .nav-links a { color: rgba(255,255,255,0.85) !important; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .hero-content p { font-size: 1.05rem; }
+            .section-title h2 { font-size: 1.9rem; }
+            .planes-grid { grid-template-columns: 1fr; max-width: 450px; }
+            .testimonios-grid { grid-template-columns: 1fr; }
+            .horarios-wrapper { grid-template-columns: 1fr; }
+            .mapa-container { min-height: 300px; }
+            .cta-clase h2 { font-size: 1.7rem; }
+            .form-clase input { min-width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            section { padding: 70px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .beneficios-grid { grid-template-columns: 1fr; }
+            .actividades-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-content h1 { font-size: 2rem; }
+            .plan-price { font-size: 2.2rem; }
+        }
+
+        /* Mobile nav overlay */
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        .nav-overlay.active { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">Cardio<span>Pilates</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#testimonios">Galería</a></li>
+                <li><a href="#planes">Tarifas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#cta-clase" class="btn-cta-nav">Clase Gratis</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Transforma tu cuerpo, <em>eleva tu bienestar</em></h1>
+            <p>Pilates, cardio y más en Las Condes — primera clase gratis</p>
+            <div class="hero-buttons">
+                <a href="#cta-clase" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i> Reserva tu clase gratis
+                </a>
+                <a href="#planes" class="btn-secondary">
+                    <i class="fas fa-tag"></i> Ver planes
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ BENEFICIOS ═══ -->
+    <section class="beneficios" id="beneficios">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>Más que un gimnasio, somos tu espacio de bienestar integral</p>
+                <div class="accent-line"></div>
+            </div>
+            <div class="beneficios-grid">
+                <div class="beneficio-card reveal">
+                    <div class="icon"><i class="fas fa-award"></i></div>
+                    <h3>Instructoras certificadas</h3>
+                    <p>Profesionales con años de experiencia y certificaciones internacionales en cada disciplina.</p>
+                </div>
+                <div class="beneficio-card reveal">
+                    <div class="icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Más de 10 disciplinas</h3>
+                    <p>Desde Pilates y Yoga hasta Body Combat y Spinning. Variedad para nunca aburrirte.</p>
+                </div>
+                <div class="beneficio-card reveal">
+                    <div class="icon"><i class="fas fa-users"></i></div>
+                    <h3>Todos los niveles</h3>
+                    <p>Clases adaptadas para principiantes, intermedios y avanzados. Todos son bienvenidos.</p>
+                </div>
+                <div class="beneficio-card reveal">
+                    <div class="icon"><i class="fas fa-gift"></i></div>
+                    <h3>Primera clase gratis</h3>
+                    <p>Ven a conocernos sin compromiso. Tu primera sesión es 100% gratuita.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PLANES ═══ -->
+    <section class="planes" id="planes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros planes</h2>
+                <p>Elige el plan que mejor se adapte a tu estilo de vida</p>
+                <div class="accent-line"></div>
+            </div>
+            <div class="planes-grid">
+                <!-- Plan Anual -->
+                <div class="plan-card reveal">
+                    <h3>Plan Anual Multisede</h3>
+                    <div class="plan-price">
+                        $409.000
+                        <small>pago único</small>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> 144 sesiones de Pilates</li>
+                        <li><i class="fas fa-check-circle"></i> 13 meses de vigencia</li>
+                        <li><i class="fas fa-check-circle"></i> 30 días de congelamiento</li>
+                        <li><i class="fas fa-check-circle"></i> 72 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-check-circle"></i> Acceso a todas las sedes</li>
+                    </ul>
+                    <a href="#cta-clase" class="btn-primary">Comprar aquí</a>
+                </div>
+                <!-- Plan Dúo -->
+                <div class="plan-card featured reveal">
+                    <div class="plan-badge">Más popular</div>
+                    <h3>Plan Dúo CardioPilates</h3>
+                    <div class="plan-price">
+                        $858.000
+                        <small>para 2 personas</small>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> 144 sesiones de Pilates cada una</li>
+                        <li><i class="fas fa-check-circle"></i> 13 meses de vigencia</li>
+                        <li><i class="fas fa-check-circle"></i> 30 días de congelamiento</li>
+                        <li><i class="fas fa-check-circle"></i> 72 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-check-circle"></i> Entrena con tu amiga o pareja</li>
+                    </ul>
+                    <a href="#cta-clase" class="btn-primary">Comprar aquí</a>
+                </div>
+            </div>
+            <p class="planes-note">
+                <i class="fas fa-credit-card"></i>
+                Pago hasta en 12 cuotas sin interés con MercadoPago
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ ACTIVIDADES ═══ -->
+    <section class="actividades" id="actividades">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestras actividades</h2>
+                <p>Descubre todas las disciplinas que tenemos para ti</p>
+                <div class="accent-line"></div>
+            </div>
+            <div class="actividades-grid">
+                <div class="actividad-item reveal"><i class="fas fa-spa"></i><h4>Pilates</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-music"></i><h4>Baile</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-dumbbell"></i><h4>Body Pump</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-fist-raised"></i><h4>Body Combat</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-arrow-up"></i><h4>Power Jump</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-boxing-glove"></i><h4>Box</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-running"></i><h4>Funcional</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-fire"></i><h4>GAP</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-hand-rock"></i><h4>Kick Boxing</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-bicycle"></i><h4>Spinning</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-grip-lines"></i><h4>TRX</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-om"></i><h4>Yoga</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ TESTIMONIOS ═══ -->
+    <section class="testimonios" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo que dicen nuestras alumnas</h2>
+                <p>Historias reales de transformación y bienestar</p>
+                <div class="accent-line"></div>
+            </div>
+            <div class="testimonios-grid">
+                <div class="testimonio-card reveal">
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">CP</div>
+                        <div class="testimonio-info">
+                            <h4>Carolina Pérez</h4>
+                            <div class="testimonio-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Llevo un año en CardioPilates y el cambio ha sido increíble. Las profes son muy dedicadas y el ambiente es súper acogedor. Lo mejor es la variedad de clases.</p>
+                </div>
+                <div class="testimonio-card reveal">
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">MR</div>
+                        <div class="testimonio-info">
+                            <h4>María José Rojas</h4>
+                            <div class="testimonio-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Empecé con la clase gratis y no pude parar. El Pilates me ayudó mucho con mi dolor de espalda. Además, el horario es muy flexible para quienes trabajamos.</p>
+                </div>
+                <div class="testimonio-card reveal">
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">VS</div>
+                        <div class="testimonio-info">
+                            <h4>Valentina Silva</h4>
+                            <div class="testimonio-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>Me inscribí con el Plan Dúo junto a mi hermana y ha sido la mejor inversión. Nos motivamos mutuamente y las clases de Body Combat son nuestra adicción.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ HORARIOS + MAPA ═══ -->
+    <section class="horarios" id="horarios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Encuéntranos</h2>
+                <p>Te esperamos en nuestra sede de Apoquindo</p>
+                <div class="accent-line"></div>
+            </div>
+            <div class="horarios-wrapper">
+                <div class="horarios-info reveal">
+                    <div class="horarios-tabla">
+                        <div class="tabla-header"><i class="fas fa-clock"></i>&nbsp; Horarios de atención</div>
+                        <div class="horario-row">
+                            <span class="dia">Lunes a Jueves</span>
+                            <span class="hora">6:30 – 22:00</span>
+                        </div>
+                        <div class="horario-row">
+                            <span class="dia">Viernes</span>
+                            <span class="hora">6:30 – 21:00</span>
+                        </div>
+                        <div class="horario-row">
+                            <span class="dia">Sábado</span>
+                            <span class="hora">8:30 – 14:00</span>
+                        </div>
+                    </div>
+                    <div class="contacto-directo" id="contacto">
+                        <div class="item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Apoquindo 4700, Nivel -1, Las Condes, Santiago</span>
+                        </div>
+                        <div class="item">
+                            <i class="fas fa-phone"></i>
+                            <span>+56 2 2244 6749 | +56 2 2378 3412</span>
+                        </div>
+                        <div class="item">
+                            <i class="fas fa-envelope"></i>
+                            <span>informacionesapoquindo@cardiopilates.cl</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mapa-container reveal">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.148!2d-70.5817!3d-33.4150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf1b5e6f5f5f%3A0x4e5f5e5e5e5e5e5e!2sAv.+Apoquindo+4700%2C+Las+Condes%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA CLASE GRATIS ═══ -->
+    <section class="cta-clase" id="cta-clase">
+        <div class="container">
+            <h2>¿Lista para empezar?</h2>
+            <p>Tu primera clase es completamente gratis. Reserva ahora y comienza tu transformación.</p>
+            <form class="form-clase" id="formClase" onsubmit="return handleFormSubmit(event)">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu email" required>
+                <input type="tel" name="telefono" placeholder="Tu teléfono" required>
+                <button type="submit" class="btn-form">
+                    <i class="fas fa-paper-plane"></i>&nbsp; Quiero mi clase gratis
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Cardio<span>Pilates</span></div>
+                    <p class="slogan">Wellness & Fitness Center</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/cardiopilates/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/cardiopilates/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Navegación</h4>
+                    <div class="footer-links">
+                        <a href="#inicio">Inicio</a>
+                        <a href="#actividades">Actividades</a>
+                        <a href="#horarios">Horarios</a>
+                        <a href="#planes">Tarifas</a>
+                        <a href="#contacto">Contacto</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Actividades</h4>
+                    <div class="footer-links">
+                        <a href="#actividades">Pilates</a>
+                        <a href="#actividades">Yoga</a>
+                        <a href="#actividades">Spinning</a>
+                        <a href="#actividades">Body Combat</a>
+                        <a href="#actividades">Funcional</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <div class="footer-contact">
+                        <div class="item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Apoquindo 4700, Nivel -1, Las Condes</span>
+                        </div>
+                        <div class="item">
+                            <i class="fas fa-phone"></i>
+                            <span>+56 2 2244 6749</span>
+                        </div>
+                        <div class="item">
+                            <i class="fas fa-envelope"></i>
+                            <span>informacionesapoquindo@cardiopilates.cl</span>
+                        </div>
+                    </div>
+                    <div class="footer-apps">
+                        <a href="#" aria-label="App Store"><i class="fab fa-apple"></i> App Store</a>
+                        <a href="#" aria-label="Google Play"><i class="fab fa-google-play"></i> Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 CardioPilates. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ WHATSAPP FLOTANTE ═══ -->
+    <a href="https://wa.me/56222446749?text=Hola,%20quiero%20información%20sobre%20los%20planes"
+       class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ═══ JAVASCRIPT ═══ -->
+    <script>
+        // ── Navbar scroll effect ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ── Mobile menu ──
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) toggleMenu();
+            });
+        });
+
+        // ── Scroll reveal ──
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ── Form submit ──
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const nombre = form.nombre.value;
+            alert(`¡Gracias ${nombre}! 🎉\n\nHemos recibido tu solicitud. Te contactaremos pronto para agendar tu clase gratis en CardioPilates Apoquindo.`);
+            form.reset();
+            return false;
+        }
+
+        // ── Smooth scroll for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

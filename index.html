@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CardioPilates Apoquindo — Wellness & Fitness Center</title>
+    <title>CardioPilates — Wellness & Fitness Center | Las Condes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ═══════════════════════════════════════
@@ -13,54 +13,69 @@
            ═══════════════════════════════════════ */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --fucsia: #e91e8c;
-            --fucsia-dark: #c4177a;
-            --fucsia-light: #ff4da6;
+            --rosa: #d6336c;
+            --rosa-dark: #b52b5a;
+            --rosa-light: #e8638b;
+            --rosa-glow: rgba(214,51,108,0.25);
+            --dark: #1a1a2e;
+            --dark-medium: #16213e;
+            --dark-soft: #2d2d44;
             --white: #ffffff;
-            --gray-dark: #1a1a2e;
-            --gray-medium: #2d2d44;
-            --gray-light: #f5f5fa;
-            --gray-text: #6b6b80;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
-            --radius: 16px;
-            --transition: all 0.3s ease;
+            --off-white: #fafafa;
+            --gray-100: #f4f4f8;
+            --gray-200: #e8e8ee;
+            --gray-400: #9e9eb8;
+            --gray-600: #5a5a72;
+            --gold: #d4a853;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+            --shadow-card: 0 4px 20px rgba(0,0,0,0.05);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--gray-dark);
-            line-height: 1.6;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--dark);
+            line-height: 1.65;
             overflow-x: hidden;
             background: var(--white);
+            -webkit-font-smoothing: antialiased;
         }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
         img { max-width: 100%; display: block; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container-wide { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
         section { padding: 100px 0; }
-        .section-title {
+
+        .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 64px;
         }
-        .section-title h2 {
-            font-size: 2.4rem;
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
             font-weight: 700;
-            color: var(--gray-dark);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--rosa);
             margin-bottom: 12px;
         }
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--gray-text);
-            max-width: 550px;
-            margin: 0 auto;
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.2;
         }
-        .section-title .accent-line {
-            width: 60px;
-            height: 4px;
-            background: var(--fucsia);
-            border-radius: 2px;
-            margin: 16px auto 0;
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            max-width: 540px;
+            margin: 0 auto;
         }
 
         /* ═══════════════════════════════════════
@@ -70,414 +85,774 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 18px 0;
+            padding: 16px 0;
             transition: var(--transition);
         }
         .navbar.scrolled {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            padding: 12px 0;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+            padding: 10px 0;
         }
         .navbar .container {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .navbar .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--white);
+        .navbar .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .navbar .logo-img {
+            height: 42px;
+            width: auto;
+            filter: brightness(0) invert(1);
             transition: var(--transition);
         }
-        .navbar .logo span { color: var(--fucsia-light); }
-        .navbar.scrolled .logo { color: var(--gray-dark); }
+        .navbar.scrolled .logo-img {
+            filter: none;
+        }
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 28px;
         }
         .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.85);
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.9);
             transition: var(--transition);
             position: relative;
+            padding: 4px 0;
         }
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px; left: 0;
+            bottom: -2px; left: 0;
             width: 0; height: 2px;
-            background: var(--fucsia);
+            background: var(--rosa);
             transition: var(--transition);
+            border-radius: 1px;
         }
+        .nav-links a:hover { color: var(--white); }
         .nav-links a:hover::after { width: 100%; }
-        .navbar.scrolled .nav-links a { color: var(--gray-dark); }
-        .nav-links .btn-cta-nav {
-            background: var(--fucsia);
+        .navbar.scrolled .nav-links a { color: var(--dark); }
+        .navbar.scrolled .nav-links a:hover { color: var(--rosa); }
+
+        .btn-cta-nav {
+            background: var(--rosa) !important;
             color: var(--white) !important;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 10px 24px !important;
+            border-radius: 50px !important;
+            letter-spacing: 0.5px !important;
             transition: var(--transition);
+            border: 2px solid var(--rosa);
         }
-        .nav-links .btn-cta-nav::after { display: none; }
-        .nav-links .btn-cta-nav:hover {
-            background: var(--fucsia-dark);
+        .btn-cta-nav::after { display: none !important; }
+        .btn-cta-nav:hover {
+            background: var(--rosa-dark) !important;
+            border-color: var(--rosa-dark) !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(233,30,140,0.4);
+            box-shadow: 0 6px 20px var(--rosa-glow);
         }
+
         .hamburger {
             display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
             z-index: 1001;
+            padding: 4px;
         }
         .hamburger span {
-            width: 28px; height: 3px;
+            width: 26px; height: 2.5px;
             background: var(--white);
-            border-radius: 3px;
+            border-radius: 2px;
             transition: var(--transition);
         }
-        .navbar.scrolled .hamburger span { background: var(--gray-dark); }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .navbar.scrolled .hamburger span { background: var(--dark); }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         /* ═══════════════════════════════════════
-           2. HERO
+           2. HERO — SELECTOR DE SEDES
            ═══════════════════════════════════════ */
-        .hero {
+        .hero-sedes {
             position: relative;
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
             padding: 0;
         }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1920&q=80') center/cover no-repeat;
-            z-index: 0;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(26,26,46,0.85) 0%, rgba(233,30,140,0.3) 100%);
-            z-index: 1;
-        }
-        .hero-content {
+        .sede-panel {
+            flex: 1;
             position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 780px;
-            padding: 0 24px;
-            animation: fadeInUp 1s ease forwards;
-        }
-        .hero-content h1 {
-            font-size: 3.6rem;
-            font-weight: 800;
-            color: var(--white);
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-        .hero-content h1 em {
-            font-style: normal;
-            color: var(--fucsia-light);
-        }
-        .hero-content p {
-            font-size: 1.25rem;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-        .hero-buttons {
             display: flex;
-            gap: 16px;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
+            min-height: 100vh;
+            cursor: pointer;
+            overflow: hidden;
+            transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-primary {
-            background: var(--fucsia);
+        .sede-panel:hover { flex: 1.3; }
+        .sede-panel .bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+        }
+        .sede-panel:hover .bg { transform: scale(1.05); }
+        .sede-panel-badajoz .bg {
+            background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80');
+        }
+        .sede-panel-apoquindo .bg {
+            background-image: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1200&q=80');
+        }
+        .sede-panel .overlay {
+            position: absolute;
+            inset: 0;
+            transition: var(--transition);
+        }
+        .sede-panel-badajoz .overlay {
+            background: linear-gradient(160deg, rgba(214,51,108,0.82) 0%, rgba(26,26,46,0.75) 100%);
+        }
+        .sede-panel-apoquindo .overlay {
+            background: linear-gradient(200deg, rgba(26,26,46,0.75) 0%, rgba(214,51,108,0.82) 100%);
+        }
+        .sede-panel:hover .overlay { opacity: 0.9; }
+        .sede-divider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: rgba(255,255,255,0.15);
+            z-index: 5;
+        }
+        .sede-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
             color: var(--white);
-            padding: 16px 36px;
+            padding: 20px;
+        }
+        .sede-content .sede-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .sede-content h2 {
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+        .sede-content .sede-address {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+        .sede-content .sede-address span {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-top: 8px;
+            text-transform: none;
+        }
+        .btn-sede {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border: 2px solid var(--white);
             border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            background: transparent;
+            cursor: pointer;
+        }
+        .btn-sede:hover {
+            background: var(--white);
+            color: var(--rosa);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .hero-logo-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            pointer-events: none;
+        }
+        .hero-logo-center img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            margin-bottom: 8px;
+        }
+        .hero-logo-center .tagline {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════
+           MAIN CONTENT (after sede select)
+           ═══════════════════════════════════════ */
+
+        /* ── Welcome Banner ── */
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-medium) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .welcome-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--rosa-glow) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .welcome-banner h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .welcome-banner h1 em {
+            font-style: normal;
+            color: var(--rosa-light);
+        }
+        .welcome-banner p {
+            font-size: 1.15rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+            position: relative;
+        }
+        .welcome-banner .btn-primary {
+            position: relative;
+        }
+
+        /* ── Buttons Global ── */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--rosa);
+            color: var(--white);
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             border: none;
             cursor: pointer;
             transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
         .btn-primary:hover {
-            background: var(--fucsia-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(233,30,140,0.4);
+            background: var(--rosa-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--rosa-glow);
         }
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            border: 2px solid rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: var(--transition);
+        .btn-outline {
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            background: transparent;
+            color: var(--rosa);
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--rosa);
+            cursor: pointer;
+            transition: var(--transition);
         }
-        .btn-secondary:hover {
-            border-color: var(--white);
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-3px);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        .btn-outline:hover {
+            background: var(--rosa);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
         /* ═══════════════════════════════════════
            3. BENEFICIOS
            ═══════════════════════════════════════ */
-        .beneficios { background: var(--gray-light); }
+        .beneficios { background: var(--white); }
         .beneficios-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 28px;
+            gap: 24px;
         }
         .beneficio-card {
-            background: var(--white);
+            background: var(--gray-100);
             border-radius: var(--radius);
-            padding: 40px 28px;
+            padding: 40px 24px;
             text-align: center;
-            box-shadow: var(--shadow);
             transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
+            border: 1px solid transparent;
+            opacity: 0; transform: translateY(30px);
         }
-        .beneficio-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .beneficio-card.visible { opacity: 1; transform: translateY(0); }
         .beneficio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gray-200);
+            background: var(--white);
         }
         .beneficio-card .icon {
-            width: 72px; height: 72px;
-            background: linear-gradient(135deg, var(--fucsia), var(--fucsia-light));
-            border-radius: 50%;
+            width: 64px; height: 64px;
+            background: var(--rosa);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--white);
+            transition: var(--transition);
+        }
+        .beneficio-card:hover .icon {
+            border-radius: 50%;
+            transform: scale(1.1);
         }
         .beneficio-card h3 {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .beneficio-card p {
-            font-size: 0.9rem;
-            color: var(--gray-text);
-            line-height: 1.5;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.55;
+        }
+
+        /* ═══════════════════════════════════════
+           INSTAGRAM FEED
+           ═══════════════════════════════════════ */
+        .instagram-section {
+            background: var(--dark);
+            color: var(--white);
+            padding: 80px 0;
+            overflow: hidden;
+        }
+        .instagram-section .section-header h2 { color: var(--white); }
+        .instagram-section .section-header p { color: var(--gray-400); }
+        .instagram-banner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .instagram-video {
+            flex: 1;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            aspect-ratio: 9/16;
+            max-width: 340px;
+            max-height: 600px;
+            background: #000;
+        }
+        .instagram-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .instagram-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .instagram-cta {
+            flex: 1;
+        }
+        .instagram-cta h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .instagram-cta h3 em {
+            font-style: normal;
+            color: var(--rosa-light);
+        }
+        .instagram-cta p {
+            color: var(--gray-400);
+            font-size: 1rem;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: var(--white);
+        }
+        .social-btn.facebook {
+            background: #1877f2;
+            color: var(--white);
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .social-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .social-stat {
+            text-align: center;
+        }
+        .social-stat .number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--rosa-light);
+        }
+        .social-stat .label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-400);
+            margin-top: 2px;
         }
 
         /* ═══════════════════════════════════════
            4. PLANES / TARIFAS
            ═══════════════════════════════════════ */
-        .planes { background: var(--white); }
+        .planes { background: var(--gray-100); }
+        .planes-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 48px;
+            background: var(--gray-200);
+            border-radius: 50px;
+            padding: 4px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .planes-tab {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: transparent;
+            color: var(--gray-600);
+        }
+        .planes-tab.active {
+            background: var(--rosa);
+            color: var(--white);
+            box-shadow: 0 4px 15px var(--rosa-glow);
+        }
         .planes-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            max-width: 900px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
         .plan-card {
-            border-radius: var(--radius);
-            padding: 48px 36px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
             text-align: center;
             position: relative;
             transition: var(--transition);
-            border: 2px solid #eee;
-            opacity: 0;
-            transform: translateY(30px);
+            border: 1px solid var(--gray-200);
+            opacity: 0; transform: translateY(30px);
         }
-        .plan-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .plan-card.visible { opacity: 1; transform: translateY(0); }
         .plan-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
         .plan-card.featured {
-            border-color: var(--fucsia);
-            background: linear-gradient(180deg, rgba(233,30,140,0.03) 0%, var(--white) 100%);
+            border: 2px solid var(--rosa);
+            box-shadow: 0 8px 40px var(--rosa-glow);
+        }
+        .plan-card.featured:hover {
+            box-shadow: 0 15px 50px var(--rosa-glow);
         }
         .plan-badge {
             position: absolute;
-            top: -14px;
+            top: -13px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--fucsia);
+            background: var(--rosa);
             color: var(--white);
-            padding: 6px 20px;
+            padding: 5px 18px;
             border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-size: 0.68rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .plan-badge.gold {
+            background: linear-gradient(135deg, var(--gold), #c4943f);
+        }
+        .plan-icon {
+            width: 48px; height: 48px;
+            background: var(--gray-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.2rem;
+            color: var(--rosa);
+        }
+        .plan-card.featured .plan-icon {
+            background: linear-gradient(135deg, var(--rosa), var(--rosa-light));
+            color: var(--white);
         }
         .plan-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .plan-duration {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .plan-price {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--fucsia);
-            margin: 16px 0;
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin: 16px 0 4px;
+            line-height: 1;
         }
-        .plan-price small {
-            font-size: 0.9rem;
-            color: var(--gray-text);
-            font-weight: 400;
-            display: block;
-            margin-top: 4px;
+        .plan-price-old {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            text-decoration: line-through;
+            margin-bottom: 16px;
         }
         .plan-features {
             text-align: left;
-            margin: 24px 0 32px;
+            margin: 20px 0 28px;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 20px;
         }
         .plan-features li {
-            padding: 8px 0;
-            font-size: 0.92rem;
-            color: var(--gray-text);
+            padding: 6px 0;
+            font-size: 0.82rem;
+            color: var(--gray-600);
             display: flex;
             align-items: flex-start;
             gap: 10px;
         }
         .plan-features li i {
-            color: var(--fucsia);
-            margin-top: 4px;
+            color: var(--rosa);
+            margin-top: 3px;
             flex-shrink: 0;
+            font-size: 0.7rem;
         }
-        .plan-card .btn-primary { width: 100%; justify-content: center; }
-        .planes-note {
+        .plan-card .btn-primary {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 0.78rem;
+        }
+        .plan-card .btn-outline {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 0.78rem;
+        }
+        .planes-footer {
             text-align: center;
-            margin-top: 32px;
-            font-size: 0.9rem;
-            color: var(--gray-text);
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
         }
-        .planes-note i { color: var(--fucsia); margin-right: 6px; }
+        .planes-footer p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .planes-footer p i { color: var(--rosa); margin-right: 6px; }
 
         /* ═══════════════════════════════════════
            5. ACTIVIDADES
            ═══════════════════════════════════════ */
-        .actividades { background: var(--gray-light); }
+        .actividades { background: var(--white); }
         .actividades-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
         }
         .actividad-item {
-            background: var(--white);
+            background: var(--gray-100);
             border-radius: var(--radius);
-            padding: 32px 16px;
+            padding: 28px 12px;
             text-align: center;
-            box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: default;
-            opacity: 0;
-            transform: translateY(20px);
+            border: 1px solid transparent;
+            opacity: 0; transform: translateY(20px);
         }
-        .actividad-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .actividad-item.visible { opacity: 1; transform: translateY(0); }
         .actividad-item:hover {
             transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-bottom: 3px solid var(--fucsia);
+            box-shadow: var(--shadow-md);
+            background: var(--white);
+            border-color: var(--rosa);
         }
         .actividad-item i {
-            font-size: 2rem;
-            color: var(--fucsia);
-            margin-bottom: 12px;
+            font-size: 1.6rem;
+            color: var(--rosa);
+            margin-bottom: 10px;
+            transition: var(--transition);
         }
+        .actividad-item:hover i { transform: scale(1.15); }
         .actividad-item h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* ═══════════════════════════════════════
            6. TESTIMONIOS
            ═══════════════════════════════════════ */
-        .testimonios { background: var(--white); }
+        .testimonios { background: var(--gray-100); }
         .testimonios-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 24px;
         }
         .testimonio-card {
-            background: var(--gray-light);
-            border-radius: var(--radius);
+            background: var(--white);
+            border-radius: var(--radius-lg);
             padding: 36px 28px;
             transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
+            border: 1px solid var(--gray-200);
+            position: relative;
+            opacity: 0; transform: translateY(30px);
         }
-        .testimonio-card.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .testimonio-card.visible { opacity: 1; transform: translateY(0); }
+        .testimonio-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
         }
-        .testimonio-card:hover { box-shadow: var(--shadow-lg); }
-        .testimonio-header {
+        .testimonio-card .quote-mark {
+            font-size: 4rem;
+            color: var(--rosa);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+            position: absolute;
+            top: 16px;
+            right: 24px;
+        }
+        .testimonio-card p {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .testimonio-footer {
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 16px;
         }
         .testimonio-avatar {
-            width: 52px; height: 52px;
+            width: 48px; height: 48px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--fucsia), var(--fucsia-light));
+            background: linear-gradient(135deg, var(--rosa), var(--rosa-light));
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 800;
+            font-size: 0.9rem;
             flex-shrink: 0;
         }
-        .testimonio-info h4 { font-size: 1rem; font-weight: 600; }
-        .testimonio-stars { color: #ffc107; font-size: 0.85rem; }
-        .testimonio-card p {
-            font-size: 0.92rem;
-            color: var(--gray-text);
-            line-height: 1.7;
-            font-style: italic;
+        .testimonio-info h4 { font-size: 0.9rem; font-weight: 700; }
+        .testimonio-stars {
+            color: #f5a623;
+            font-size: 0.75rem;
+            margin-top: 2px;
         }
-        .testimonio-card p::before { content: '\201C'; font-size: 1.2rem; }
-        .testimonio-card p::after { content: '\201D'; font-size: 1.2rem; }
 
         /* ═══════════════════════════════════════
            7. HORARIOS + MAPA
            ═══════════════════════════════════════ */
-        .horarios { background: var(--gray-light); }
+        .horarios { background: var(--white); }
         .horarios-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -490,49 +865,64 @@
         }
         .horarios-info.visible { opacity: 1; transform: translateX(0); }
         .horarios-tabla {
-            background: var(--white);
-            border-radius: var(--radius);
+            background: var(--gray-100);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
-        .horarios-tabla .tabla-header {
-            background: var(--gray-dark);
+        .tabla-header {
+            background: var(--dark);
             color: var(--white);
-            padding: 16px 24px;
-            font-weight: 600;
-            font-size: 1.05rem;
+            padding: 18px 28px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .horario-row {
             display: flex;
             justify-content: space-between;
-            padding: 16px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.95rem;
+            align-items: center;
+            padding: 18px 28px;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 0.9rem;
         }
         .horario-row:last-child { border-bottom: none; }
-        .horario-row .dia { font-weight: 600; }
-        .horario-row .hora { color: var(--fucsia); font-weight: 500; }
+        .horario-row .dia { font-weight: 700; }
+        .horario-row .hora {
+            color: var(--rosa);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
         .contacto-directo { margin-top: 8px; }
-        .contacto-directo .item {
+        .contacto-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-            font-size: 0.95rem;
-            color: var(--gray-text);
+            gap: 14px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: var(--gray-600);
         }
-        .contacto-directo .item i {
-            color: var(--fucsia);
-            width: 20px;
-            text-align: center;
+        .contacto-item .icon-circle {
+            width: 40px; height: 40px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rosa);
+            flex-shrink: 0;
+            font-size: 0.85rem;
         }
         .mapa-container {
-            border-radius: var(--radius);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-md);
             height: 100%;
-            min-height: 400px;
+            min-height: 440px;
             opacity: 0; transform: translateX(30px);
             transition: all 0.6s ease;
         }
@@ -540,162 +930,262 @@
         .mapa-container iframe {
             width: 100%;
             height: 100%;
-            min-height: 400px;
+            min-height: 440px;
             border: none;
         }
 
         /* ═══════════════════════════════════════
-           8. CTA CLASE GRATIS
+           8. FORMULARIO CONTACTO
            ═══════════════════════════════════════ */
-        .cta-clase {
-            background: linear-gradient(135deg, var(--fucsia) 0%, var(--fucsia-dark) 100%);
+        .contacto-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-medium) 100%);
             color: var(--white);
-            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .cta-clase h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+        .contacto-section::before {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--rosa-glow) 0%, transparent 70%);
+            border-radius: 50%;
         }
-        .cta-clase > .container > p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 40px;
+        .contacto-section .section-header h2 { color: var(--white); }
+        .contacto-section .section-header p { color: var(--gray-400); }
+        .contacto-form-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            position: relative;
         }
-        .form-clase {
-            display: flex;
-            gap: 14px;
-            max-width: 800px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            justify-content: center;
+        .contacto-form-info h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
         }
-        .form-clase input {
-            flex: 1;
-            min-width: 200px;
-            padding: 16px 20px;
-            border: none;
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
+        .contacto-form-info p {
+            color: var(--gray-400);
             font-size: 0.95rem;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        .contacto-form-info .info-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .info-item-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .info-item-row .icon-circle {
+            width: 48px; height: 48px;
+            background: rgba(214,51,108,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rosa-light);
+            flex-shrink: 0;
+        }
+        .info-item-row .info-text {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+        .info-item-row .info-text strong {
+            display: block;
+            color: var(--white);
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+        .contacto-form {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-group {
+            margin-bottom: 0;
+        }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--gray-400);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
             outline: none;
             transition: var(--transition);
         }
-        .form-clase input:focus {
-            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.3);
         }
-        .form-clase input::placeholder { color: #aaa; }
-        .btn-form {
-            background: var(--gray-dark);
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--rosa);
+            box-shadow: 0 0 0 3px var(--rosa-glow);
+        }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+        .form-group select option {
+            background: var(--dark);
             color: var(--white);
-            padding: 16px 32px;
-            border-radius: 50px;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
         }
-        .btn-form:hover {
-            background: var(--gray-medium);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .contacto-form .btn-primary {
+            width: 100%;
+            justify-content: center;
+            margin-top: 8px;
+            padding: 16px;
         }
 
         /* ═══════════════════════════════════════
            9. FOOTER
            ═══════════════════════════════════════ */
         .footer {
-            background: var(--gray-dark);
-            color: rgba(255,255,255,0.7);
-            padding: 60px 0 30px;
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 64px 0 24px;
         }
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            grid-template-columns: 1.8fr 1fr 1fr 1.5fr;
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
-        .footer-brand .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 8px;
+        .footer-brand .logo-img {
+            height: 36px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 12px;
         }
-        .footer-brand .logo span { color: var(--fucsia-light); }
         .footer-brand .slogan {
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
         .footer-social {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
         .footer-social a {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
+            font-size: 0.9rem;
             transition: var(--transition);
         }
         .footer-social a:hover {
-            background: var(--fucsia);
+            background: var(--rosa);
             transform: translateY(-3px);
         }
         .footer h4 {
             color: var(--white);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
         }
         .footer-links a {
             display: block;
-            padding: 4px 0;
-            font-size: 0.9rem;
+            padding: 5px 0;
+            font-size: 0.85rem;
             transition: var(--transition);
         }
-        .footer-links a:hover { color: var(--fucsia-light); padding-left: 6px; }
-        .footer-contact .item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-size: 0.88rem;
+        .footer-links a:hover { color: var(--rosa-light); padding-left: 4px; }
+        .footer-contact .contacto-item {
+            margin-bottom: 14px;
+            color: rgba(255,255,255,0.6);
         }
-        .footer-contact .item i {
-            color: var(--fucsia-light);
-            margin-top: 4px;
+        .footer-contact .icon-circle {
+            width: 32px; height: 32px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--rosa-light);
+            font-size: 0.75rem;
             flex-shrink: 0;
         }
+        .footer-contact .contacto-item span { font-size: 0.82rem; }
         .footer-apps {
             display: flex;
             gap: 10px;
-            margin-top: 16px;
+            margin-top: 20px;
         }
         .footer-apps a {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,255,255,0.1);
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            background: rgba(255,255,255,0.08);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.78rem;
             color: var(--white);
+            font-weight: 500;
             transition: var(--transition);
         }
-        .footer-apps a:hover { background: rgba(255,255,255,0.2); }
+        .footer-apps a:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.08);
             padding-top: 24px;
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            opacity: 0.5;
         }
 
         /* ═══════════════════════════════════════
@@ -706,74 +1196,93 @@
             bottom: 28px;
             right: 28px;
             z-index: 999;
-            width: 60px; height: 60px;
+            width: 58px; height: 58px;
             background: #25d366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            box-shadow: 0 4px 20px rgba(37,211,102,0.35);
             transition: var(--transition);
-            animation: pulse 2s infinite;
         }
         .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 6px 28px rgba(37,211,102,0.45);
         }
-        .whatsapp-float i { color: var(--white); font-size: 1.8rem; }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-            50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); }
-        }
+        .whatsapp-float i { color: var(--white); font-size: 1.7rem; }
 
         /* ═══════════════════════════════════════
            RESPONSIVE
            ═══════════════════════════════════════ */
         @media (max-width: 1024px) {
             .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
-            .actividades-grid { grid-template-columns: repeat(3, 1fr); }
+            .planes-grid { grid-template-columns: repeat(2, 1fr); }
+            .actividades-grid { grid-template-columns: repeat(4, 1fr); }
             .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .sede-content .sede-address { font-size: 1.6rem; }
         }
 
         @media (max-width: 768px) {
+            section { padding: 72px 0; }
             .hamburger { display: flex; }
             .nav-links {
                 position: fixed;
                 top: 0; right: -100%;
-                width: 80%;
-                max-width: 320px;
+                width: 85%;
+                max-width: 340px;
                 height: 100vh;
-                background: var(--gray-dark);
+                background: var(--dark);
                 flex-direction: column;
-                padding: 100px 40px 40px;
-                gap: 24px;
+                padding: 100px 32px 40px;
+                gap: 20px;
                 transition: var(--transition);
-                box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+                box-shadow: -10px 0 40px rgba(0,0,0,0.4);
             }
             .nav-links.open { right: 0; }
-            .nav-links a { color: rgba(255,255,255,0.85) !important; font-size: 1.05rem; }
-            .navbar.scrolled .nav-links a { color: rgba(255,255,255,0.85) !important; }
-            .hero-content h1 { font-size: 2.4rem; }
-            .hero-content p { font-size: 1.05rem; }
-            .section-title h2 { font-size: 1.9rem; }
-            .planes-grid { grid-template-columns: 1fr; max-width: 450px; }
+            .nav-links a {
+                color: rgba(255,255,255,0.85) !important;
+                font-size: 0.9rem;
+            }
+
+            .hero-sedes { flex-direction: column; }
+            .sede-panel { min-height: 50vh; }
+            .sede-divider {
+                top: 50%; left: 0;
+                width: 100%; height: 2px;
+                transform: none;
+            }
+            .hero-logo-center { display: none; }
+
+            .section-header h2 { font-size: 1.8rem; }
+            .welcome-banner h1 { font-size: 2rem; }
+
+            .planes-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
             .testimonios-grid { grid-template-columns: 1fr; }
             .horarios-wrapper { grid-template-columns: 1fr; }
             .mapa-container { min-height: 300px; }
-            .cta-clase h2 { font-size: 1.7rem; }
-            .form-clase input { min-width: 100%; }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-            section { padding: 70px 0; }
+
+            .instagram-banner { flex-direction: column; text-align: center; }
+            .instagram-video { max-width: 280px; margin: 0 auto; }
+            .instagram-cta { text-align: center; }
+            .social-buttons { justify-content: center; }
+            .social-stats { justify-content: center; }
+
+            .contacto-form-wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .form-grid { grid-template-columns: 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
 
         @media (max-width: 480px) {
             .beneficios-grid { grid-template-columns: 1fr; }
-            .actividades-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-content h1 { font-size: 2rem; }
-            .plan-price { font-size: 2.2rem; }
+            .actividades-grid { grid-template-columns: repeat(3, 1fr); }
+            .sede-content .sede-address { font-size: 1.3rem; }
+            .plan-price { font-size: 2rem; }
+            .contacto-form { padding: 24px; }
         }
 
-        /* Mobile nav overlay */
+        /* Nav overlay */
         .nav-overlay {
             position: fixed;
             inset: 0;
@@ -791,15 +1300,17 @@
     <!-- ═══ NAVBAR ═══ -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo">Cardio<span>Pilates</span></a>
+            <a href="#" class="logo-link">
+                <img src="https://www.cardiopilates.cl/wp-content/uploads/2019/05/logo-big.png" alt="CardioPilates" class="logo-img">
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#actividades">Actividades</a></li>
                 <li><a href="#horarios">Horarios</a></li>
-                <li><a href="#testimonios">Galería</a></li>
                 <li><a href="#planes">Tarifas</a></li>
+                <li><a href="#social">Redes</a></li>
                 <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#cta-clase" class="btn-cta-nav">Clase Gratis</a></li>
+                <li><a href="#contacto" class="btn-cta-nav">Clase Gratis</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span><span></span><span></span>
@@ -808,125 +1319,101 @@
     </nav>
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <!-- ═══ HERO ═══ -->
-    <section class="hero" id="inicio">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Transforma tu cuerpo, <em>eleva tu bienestar</em></h1>
-            <p>Pilates, cardio y más en Las Condes — primera clase gratis</p>
-            <div class="hero-buttons">
-                <a href="#cta-clase" class="btn-primary">
-                    <i class="fas fa-calendar-check"></i> Reserva tu clase gratis
-                </a>
-                <a href="#planes" class="btn-secondary">
-                    <i class="fas fa-tag"></i> Ver planes
-                </a>
+    <!-- ═══ HERO — SELECTOR DE SEDES ═══ -->
+    <section class="hero-sedes" id="inicio">
+        <div class="sede-panel sede-panel-badajoz" onclick="window.location.href='https://www.cardiopilates.cl/badajoz/'">
+            <div class="bg"></div>
+            <div class="overlay"></div>
+            <div class="sede-content">
+                <div class="sede-label">Ir a sede</div>
+                <h2>Nueva Las Condes</h2>
+                <div class="sede-address">
+                    Badajoz 127
+                    <span>Las Condes, Santiago</span>
+                </div>
+                <button class="btn-sede"><i class="fas fa-arrow-right"></i> Explorar sede</button>
+            </div>
+        </div>
+        <div class="sede-divider"></div>
+        <div class="hero-logo-center">
+            <img src="https://www.cardiopilates.cl/wp-content/uploads/2019/05/logo-big.png" alt="CardioPilates">
+            <div class="tagline">Wellness & Fitness Center</div>
+        </div>
+        <div class="sede-panel sede-panel-apoquindo" onclick="window.location.href='https://www.cardiopilates.cl/apoquindo/'">
+            <div class="bg"></div>
+            <div class="overlay"></div>
+            <div class="sede-content">
+                <div class="sede-label">Ir a sede</div>
+                <h2>Escuela Militar</h2>
+                <div class="sede-address">
+                    Apoquindo 4700
+                    <span>Nivel -1, Las Condes, Santiago</span>
+                </div>
+                <button class="btn-sede"><i class="fas fa-arrow-right"></i> Explorar sede</button>
             </div>
         </div>
     </section>
 
+    <!-- ═══ WELCOME BANNER ═══ -->
+    <div class="welcome-banner">
+        <div class="container">
+            <h1>Comienza tu vida <em>saludable</em> hoy</h1>
+            <p>Pilates, cardio y más de 10 disciplinas en Las Condes. Tu primera clase es completamente gratis.</p>
+            <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Reserva tu clase gratis</a>
+        </div>
+    </div>
+
     <!-- ═══ BENEFICIOS ═══ -->
     <section class="beneficios" id="beneficios">
         <div class="container">
-            <div class="section-title">
-                <h2>¿Por qué elegirnos?</h2>
-                <p>Más que un gimnasio, somos tu espacio de bienestar integral</p>
-                <div class="accent-line"></div>
+            <div class="section-header">
+                <div class="section-label">Por qué elegirnos</div>
+                <h2>Tu bienestar es nuestra prioridad</h2>
+                <p>Más que un gimnasio, somos tu espacio de transformación</p>
             </div>
             <div class="beneficios-grid">
                 <div class="beneficio-card reveal">
                     <div class="icon"><i class="fas fa-award"></i></div>
                     <h3>Instructoras certificadas</h3>
-                    <p>Profesionales con años de experiencia y certificaciones internacionales en cada disciplina.</p>
+                    <p>Profesionales con años de experiencia y certificaciones internacionales.</p>
                 </div>
                 <div class="beneficio-card reveal">
                     <div class="icon"><i class="fas fa-layer-group"></i></div>
-                    <h3>Más de 10 disciplinas</h3>
-                    <p>Desde Pilates y Yoga hasta Body Combat y Spinning. Variedad para nunca aburrirte.</p>
+                    <h3>+10 disciplinas</h3>
+                    <p>Desde Pilates y Yoga hasta Body Combat y Spinning.</p>
                 </div>
                 <div class="beneficio-card reveal">
                     <div class="icon"><i class="fas fa-users"></i></div>
                     <h3>Todos los niveles</h3>
-                    <p>Clases adaptadas para principiantes, intermedios y avanzados. Todos son bienvenidos.</p>
+                    <p>Clases adaptadas para principiantes, intermedios y avanzados.</p>
                 </div>
                 <div class="beneficio-card reveal">
                     <div class="icon"><i class="fas fa-gift"></i></div>
                     <h3>Primera clase gratis</h3>
-                    <p>Ven a conocernos sin compromiso. Tu primera sesión es 100% gratuita.</p>
+                    <p>Ven a conocernos sin compromiso. Tu primera sesión es gratuita.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ═══ PLANES ═══ -->
-    <section class="planes" id="planes">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros planes</h2>
-                <p>Elige el plan que mejor se adapte a tu estilo de vida</p>
-                <div class="accent-line"></div>
-            </div>
-            <div class="planes-grid">
-                <!-- Plan Anual -->
-                <div class="plan-card reveal">
-                    <h3>Plan Anual Multisede</h3>
-                    <div class="plan-price">
-                        $409.000
-                        <small>pago único</small>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check-circle"></i> 144 sesiones de Pilates</li>
-                        <li><i class="fas fa-check-circle"></i> 13 meses de vigencia</li>
-                        <li><i class="fas fa-check-circle"></i> 30 días de congelamiento</li>
-                        <li><i class="fas fa-check-circle"></i> 72 sesiones actividades complementarias</li>
-                        <li><i class="fas fa-check-circle"></i> Acceso a todas las sedes</li>
-                    </ul>
-                    <a href="#cta-clase" class="btn-primary">Comprar aquí</a>
-                </div>
-                <!-- Plan Dúo -->
-                <div class="plan-card featured reveal">
-                    <div class="plan-badge">Más popular</div>
-                    <h3>Plan Dúo CardioPilates</h3>
-                    <div class="plan-price">
-                        $858.000
-                        <small>para 2 personas</small>
-                    </div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check-circle"></i> 144 sesiones de Pilates cada una</li>
-                        <li><i class="fas fa-check-circle"></i> 13 meses de vigencia</li>
-                        <li><i class="fas fa-check-circle"></i> 30 días de congelamiento</li>
-                        <li><i class="fas fa-check-circle"></i> 72 sesiones actividades complementarias</li>
-                        <li><i class="fas fa-check-circle"></i> Entrena con tu amiga o pareja</li>
-                    </ul>
-                    <a href="#cta-clase" class="btn-primary">Comprar aquí</a>
-                </div>
-            </div>
-            <p class="planes-note">
-                <i class="fas fa-credit-card"></i>
-                Pago hasta en 12 cuotas sin interés con MercadoPago
-            </p>
         </div>
     </section>
 
     <!-- ═══ ACTIVIDADES ═══ -->
     <section class="actividades" id="actividades">
         <div class="container">
-            <div class="section-title">
+            <div class="section-header">
+                <div class="section-label">Disciplinas</div>
                 <h2>Nuestras actividades</h2>
-                <p>Descubre todas las disciplinas que tenemos para ti</p>
-                <div class="accent-line"></div>
+                <p>Descubre todas las opciones que tenemos para ti</p>
             </div>
             <div class="actividades-grid">
                 <div class="actividad-item reveal"><i class="fas fa-spa"></i><h4>Pilates</h4></div>
                 <div class="actividad-item reveal"><i class="fas fa-music"></i><h4>Baile</h4></div>
                 <div class="actividad-item reveal"><i class="fas fa-dumbbell"></i><h4>Body Pump</h4></div>
-                <div class="actividad-item reveal"><i class="fas fa-fist-raised"></i><h4>Body Combat</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-hand-fist"></i><h4>Body Combat</h4></div>
                 <div class="actividad-item reveal"><i class="fas fa-arrow-up"></i><h4>Power Jump</h4></div>
-                <div class="actividad-item reveal"><i class="fas fa-boxing-glove"></i><h4>Box</h4></div>
-                <div class="actividad-item reveal"><i class="fas fa-running"></i><h4>Funcional</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-mitten"></i><h4>Box</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-person-running"></i><h4>Funcional</h4></div>
                 <div class="actividad-item reveal"><i class="fas fa-fire"></i><h4>GAP</h4></div>
-                <div class="actividad-item reveal"><i class="fas fa-hand-rock"></i><h4>Kick Boxing</h4></div>
+                <div class="actividad-item reveal"><i class="fas fa-hand-back-fist"></i><h4>Kick Boxing</h4></div>
                 <div class="actividad-item reveal"><i class="fas fa-bicycle"></i><h4>Spinning</h4></div>
                 <div class="actividad-item reveal"><i class="fas fa-grip-lines"></i><h4>TRX</h4></div>
                 <div class="actividad-item reveal"><i class="fas fa-om"></i><h4>Yoga</h4></div>
@@ -934,17 +1421,178 @@
         </div>
     </section>
 
+    <!-- ═══ INSTAGRAM / REDES ═══ -->
+    <section class="instagram-section" id="social">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Síguenos</div>
+                <h2>Nuestra comunidad en redes</h2>
+                <p>Conoce el día a día de CardioPilates</p>
+            </div>
+            <div class="instagram-banner">
+                <div class="instagram-video">
+                    <iframe
+                        src="https://www.instagram.com/reel/DGg0-oWuqT0/embed/"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="instagram-cta">
+                    <h3>Únete a nuestra <em>comunidad fitness</em></h3>
+                    <p>Mira nuestras rutinas, tips de bienestar, historias de transformación y todo lo que pasa en nuestras sedes. Conecta con miles de alumnas que ya están cambiando su vida.</p>
+                    <div class="social-buttons">
+                        <a href="https://www.instagram.com/cardiopilates/" target="_blank" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i> @cardiopilates
+                        </a>
+                        <a href="https://www.facebook.com/Centro.CardioPilates/" target="_blank" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </a>
+                    </div>
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <div class="number">15K+</div>
+                            <div class="label">Seguidores</div>
+                        </div>
+                        <div class="social-stat">
+                            <div class="number">500+</div>
+                            <div class="label">Publicaciones</div>
+                        </div>
+                        <div class="social-stat">
+                            <div class="number">2</div>
+                            <div class="label">Sedes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PLANES ═══ -->
+    <section class="planes" id="planes">
+        <div class="container-wide">
+            <div class="section-header">
+                <div class="section-label">Tarifas</div>
+                <h2>Elige tu plan ideal</h2>
+                <p>Todos nuestros planes incluyen acceso a actividades complementarias</p>
+            </div>
+            <div class="planes-tabs">
+                <button class="planes-tab active" onclick="switchSede(this, 'ambas')">Todas</button>
+                <button class="planes-tab" onclick="switchSede(this, 'badajoz')">Badajoz</button>
+                <button class="planes-tab" onclick="switchSede(this, 'apoquindo')">Apoquindo</button>
+            </div>
+            <div class="planes-grid">
+                <!-- Mensual -->
+                <div class="plan-card reveal">
+                    <div class="plan-icon"><i class="fas fa-calendar-day"></i></div>
+                    <h3>Mensual Pilates Full</h3>
+                    <div class="plan-duration">30 días</div>
+                    <div class="plan-price">$110.000</div>
+                    <div class="plan-price-old">+ Matrícula $50.000 (Total $160.000)</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-circle"></i> 12 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 6 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-circle"></i> Box, TRX, Funcional, Baile, Body Pump, GAP, Yoga y más</li>
+                    </ul>
+                    <a href="#contacto" class="btn-outline">Comprar</a>
+                </div>
+                <!-- Trimestral -->
+                <div class="plan-card reveal">
+                    <div class="plan-icon"><i class="fas fa-calendar-week"></i></div>
+                    <h3>Trimestral Pilates Full</h3>
+                    <div class="plan-duration">90 días</div>
+                    <div class="plan-price">$270.000</div>
+                    <div class="plan-price-old">&nbsp;</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-circle"></i> 32 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 20 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-circle"></i> Funcional, Yoga, GAP, Body Pump y más</li>
+                    </ul>
+                    <a href="#contacto" class="btn-outline">Comprar</a>
+                </div>
+                <!-- Semestral -->
+                <div class="plan-card reveal">
+                    <div class="plan-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Semestral Multisede</h3>
+                    <div class="plan-duration">180 días</div>
+                    <div class="plan-price">$359.000</div>
+                    <div class="plan-price-old">Precio lista $439.000</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-circle"></i> 62 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 36 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-circle"></i> Acceso a ambas sedes</li>
+                        <li><i class="fas fa-circle"></i> Sala cardiovascular incluida</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+                <!-- Anual -->
+                <div class="plan-card reveal">
+                    <div class="plan-badge">Mejor precio</div>
+                    <div class="plan-icon"><i class="fas fa-calendar"></i></div>
+                    <h3>Anual Multisede</h3>
+                    <div class="plan-duration">365 días</div>
+                    <div class="plan-price">$409.000</div>
+                    <div class="plan-price-old">Precio lista $599.000</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-circle"></i> 124 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 72 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-circle"></i> Acceso a ambas sedes</li>
+                        <li><i class="fas fa-circle"></i> Body Combat, Box, Spinning, TRX, Yoga y más</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+                <!-- VIP -->
+                <div class="plan-card featured reveal">
+                    <div class="plan-badge gold"><i class="fas fa-crown"></i>&nbsp; Premium</div>
+                    <div class="plan-icon"><i class="fas fa-gem"></i></div>
+                    <h3>VIP CardioPilates</h3>
+                    <div class="plan-duration">365 días</div>
+                    <div class="plan-price">$690.000</div>
+                    <div class="plan-price-old">&nbsp;</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-circle"></i> 288 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 144 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-circle"></i> 45 días de congelamiento</li>
+                        <li><i class="fas fa-circle"></i> Acceso completo ilimitado</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+                <!-- Dúo -->
+                <div class="plan-card reveal">
+                    <div class="plan-badge">Más popular</div>
+                    <div class="plan-icon"><i class="fas fa-user-group"></i></div>
+                    <h3>Plan Dúo</h3>
+                    <div class="plan-duration">365 días — 2 personas</div>
+                    <div class="plan-price">$858.000</div>
+                    <div class="plan-price-old">Precio lista $978.000</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-circle"></i> 124 sesiones Pilates por persona</li>
+                        <li><i class="fas fa-circle"></i> 72 sesiones complementarias por persona</li>
+                        <li><i class="fas fa-circle"></i> 30 días congelamiento</li>
+                        <li><i class="fas fa-circle"></i> Entrena con tu amiga o pareja</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+            </div>
+            <div class="planes-footer">
+                <p><i class="fas fa-credit-card"></i> Pago hasta en 12 cuotas sin interés con MercadoPago</p>
+                <p><i class="fas fa-exchange-alt"></i> También aceptamos transferencia bancaria y efectivo</p>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══ TESTIMONIOS ═══ -->
     <section class="testimonios" id="testimonios">
         <div class="container">
-            <div class="section-title">
+            <div class="section-header">
+                <div class="section-label">Testimonios</div>
                 <h2>Lo que dicen nuestras alumnas</h2>
                 <p>Historias reales de transformación y bienestar</p>
-                <div class="accent-line"></div>
             </div>
             <div class="testimonios-grid">
                 <div class="testimonio-card reveal">
-                    <div class="testimonio-header">
+                    <div class="quote-mark">"</div>
+                    <p>Llevo un año en CardioPilates y el cambio ha sido increíble. Las profes son muy dedicadas y el ambiente es súper acogedor. Lo mejor es la variedad de clases, nunca me aburro.</p>
+                    <div class="testimonio-footer">
                         <div class="testimonio-avatar">CP</div>
                         <div class="testimonio-info">
                             <h4>Carolina Pérez</h4>
@@ -953,10 +1601,11 @@
                             </div>
                         </div>
                     </div>
-                    <p>Llevo un año en CardioPilates y el cambio ha sido increíble. Las profes son muy dedicadas y el ambiente es súper acogedor. Lo mejor es la variedad de clases.</p>
                 </div>
                 <div class="testimonio-card reveal">
-                    <div class="testimonio-header">
+                    <div class="quote-mark">"</div>
+                    <p>Empecé con la clase gratis y no pude parar. El Pilates me ayudó mucho con mi dolor de espalda. Los horarios son muy flexibles para quienes trabajamos en oficina.</p>
+                    <div class="testimonio-footer">
                         <div class="testimonio-avatar">MR</div>
                         <div class="testimonio-info">
                             <h4>María José Rojas</h4>
@@ -965,10 +1614,11 @@
                             </div>
                         </div>
                     </div>
-                    <p>Empecé con la clase gratis y no pude parar. El Pilates me ayudó mucho con mi dolor de espalda. Además, el horario es muy flexible para quienes trabajamos.</p>
                 </div>
                 <div class="testimonio-card reveal">
-                    <div class="testimonio-header">
+                    <div class="quote-mark">"</div>
+                    <p>Me inscribí con el Plan Dúo junto a mi hermana y ha sido la mejor inversión. Nos motivamos mutuamente y las clases de Body Combat son nuestra adicción.</p>
+                    <div class="testimonio-footer">
                         <div class="testimonio-avatar">VS</div>
                         <div class="testimonio-info">
                             <h4>Valentina Silva</h4>
@@ -977,7 +1627,6 @@
                             </div>
                         </div>
                     </div>
-                    <p>Me inscribí con el Plan Dúo junto a mi hermana y ha sido la mejor inversión. Nos motivamos mutuamente y las clases de Body Combat son nuestra adicción.</p>
                 </div>
             </div>
         </div>
@@ -986,15 +1635,15 @@
     <!-- ═══ HORARIOS + MAPA ═══ -->
     <section class="horarios" id="horarios">
         <div class="container">
-            <div class="section-title">
+            <div class="section-header">
+                <div class="section-label">Ubicación</div>
                 <h2>Encuéntranos</h2>
-                <p>Te esperamos en nuestra sede de Apoquindo</p>
-                <div class="accent-line"></div>
+                <p>Te esperamos en nuestras sedes en Las Condes</p>
             </div>
             <div class="horarios-wrapper">
                 <div class="horarios-info reveal">
                     <div class="horarios-tabla">
-                        <div class="tabla-header"><i class="fas fa-clock"></i>&nbsp; Horarios de atención</div>
+                        <div class="tabla-header"><i class="fas fa-clock"></i> Horarios de atención</div>
                         <div class="horario-row">
                             <span class="dia">Lunes a Jueves</span>
                             <span class="hora">6:30 – 22:00</span>
@@ -1008,25 +1657,29 @@
                             <span class="hora">8:30 – 14:00</span>
                         </div>
                     </div>
-                    <div class="contacto-directo" id="contacto">
-                        <div class="item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Av. Apoquindo 4700, Nivel -1, Las Condes, Santiago</span>
+                    <div class="contacto-directo">
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-location-dot"></i></div>
+                            <span><strong>Sede Apoquindo:</strong> Av. Apoquindo 4700, Nivel -1, Las Condes</span>
                         </div>
-                        <div class="item">
-                            <i class="fas fa-phone"></i>
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-location-dot"></i></div>
+                            <span><strong>Sede Badajoz:</strong> Badajoz 127, Las Condes</span>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
                             <span>+56 2 2244 6749 | +56 2 2378 3412</span>
                         </div>
-                        <div class="item">
-                            <i class="fas fa-envelope"></i>
-                            <span>informacionesapoquindo@cardiopilates.cl</span>
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                            <span>informaciones@cardiopilates.cl</span>
                         </div>
                     </div>
                 </div>
                 <div class="mapa-container reveal">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.148!2d-70.5817!3d-33.4150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf1b5e6f5f5f%3A0x4e5f5e5e5e5e5e5e!2sAv.+Apoquindo+4700%2C+Las+Condes%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl"
-                        allowfullscreen=""
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.1!2d-70.5817!3d-33.4150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf1b5e6f5f5f%3A0x4e5f5e5e5e5e5e5e!2sAv.+Apoquindo+4700%2C+Las+Condes%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl"
+                        allowfullscreen
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
@@ -1035,19 +1688,96 @@
         </div>
     </section>
 
-    <!-- ═══ CTA CLASE GRATIS ═══ -->
-    <section class="cta-clase" id="cta-clase">
+    <!-- ═══ FORMULARIO CONTACTO PROFESIONAL ═══ -->
+    <section class="contacto-section" id="contacto">
         <div class="container">
-            <h2>¿Lista para empezar?</h2>
-            <p>Tu primera clase es completamente gratis. Reserva ahora y comienza tu transformación.</p>
-            <form class="form-clase" id="formClase" onsubmit="return handleFormSubmit(event)">
-                <input type="text" name="nombre" placeholder="Tu nombre" required>
-                <input type="email" name="email" placeholder="Tu email" required>
-                <input type="tel" name="telefono" placeholder="Tu teléfono" required>
-                <button type="submit" class="btn-form">
-                    <i class="fas fa-paper-plane"></i>&nbsp; Quiero mi clase gratis
-                </button>
-            </form>
+            <div class="section-header">
+                <div class="section-label">Contacto</div>
+                <h2>Agenda tu clase gratis</h2>
+                <p>Completa el formulario y te contactaremos para reservar tu sesión</p>
+            </div>
+            <div class="contacto-form-wrapper">
+                <div class="contacto-form-info">
+                    <h3>¿Lista para empezar tu transformación?</h3>
+                    <p>Tu primera clase es completamente gratis y sin compromiso. Elige la sede que más te acomode y nosotras nos encargamos del resto.</p>
+                    <div class="info-items">
+                        <div class="info-item-row">
+                            <div class="icon-circle"><i class="fas fa-clock"></i></div>
+                            <div class="info-text">
+                                <strong>Respuesta rápida</strong>
+                                Te contactamos en menos de 24 horas
+                            </div>
+                        </div>
+                        <div class="info-item-row">
+                            <div class="icon-circle"><i class="fas fa-shield-check"></i></div>
+                            <div class="info-text">
+                                <strong>Sin compromiso</strong>
+                                Prueba gratis antes de decidir
+                            </div>
+                        </div>
+                        <div class="info-item-row">
+                            <div class="icon-circle"><i class="fas fa-calendar-check"></i></div>
+                            <div class="info-text">
+                                <strong>Horario flexible</strong>
+                                Elige el horario que más te acomode
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contacto-form" id="formClase" onsubmit="return handleFormSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sede">Sede preferida</label>
+                            <select id="sede" name="sede" required>
+                                <option value="" disabled selected>Selecciona una sede</option>
+                                <option value="apoquindo">Apoquindo 4700</option>
+                                <option value="badajoz">Badajoz 127</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="actividad">Actividad de interés</label>
+                            <select id="actividad" name="actividad">
+                                <option value="" disabled selected>Selecciona una actividad</option>
+                                <option value="pilates">Pilates</option>
+                                <option value="yoga">Yoga</option>
+                                <option value="baile">Baile</option>
+                                <option value="body-pump">Body Pump</option>
+                                <option value="body-combat">Body Combat</option>
+                                <option value="spinning">Spinning</option>
+                                <option value="funcional">Funcional</option>
+                                <option value="box">Box</option>
+                                <option value="trx">TRX</option>
+                                <option value="gap">GAP</option>
+                                <option value="kick-boxing">Kick Boxing</option>
+                                <option value="power-jump">Power Jump</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="mensaje">Mensaje (opcional)</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="¿En qué horario te acomoda? ¿Alguna consulta adicional?"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Quiero mi clase gratis
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -1056,11 +1786,12 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo">Cardio<span>Pilates</span></div>
+                    <img src="https://www.cardiopilates.cl/wp-content/uploads/2019/05/logo-big.png" alt="CardioPilates" class="logo-img">
                     <p class="slogan">Wellness & Fitness Center</p>
+                    <p>Más de 10 disciplinas para tu bienestar. Dos sedes en Las Condes para que entrenes donde más te acomode.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/cardiopilates/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/cardiopilates/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/Centro.CardioPilates/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 <div>
@@ -1081,22 +1812,27 @@
                         <a href="#actividades">Spinning</a>
                         <a href="#actividades">Body Combat</a>
                         <a href="#actividades">Funcional</a>
+                        <a href="#actividades">TRX</a>
                     </div>
                 </div>
                 <div>
                     <h4>Contacto</h4>
                     <div class="footer-contact">
-                        <div class="item">
-                            <i class="fas fa-map-marker-alt"></i>
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-location-dot"></i></div>
                             <span>Av. Apoquindo 4700, Nivel -1, Las Condes</span>
                         </div>
-                        <div class="item">
-                            <i class="fas fa-phone"></i>
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-location-dot"></i></div>
+                            <span>Badajoz 127, Las Condes</span>
+                        </div>
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-phone"></i></div>
                             <span>+56 2 2244 6749</span>
                         </div>
-                        <div class="item">
-                            <i class="fas fa-envelope"></i>
-                            <span>informacionesapoquindo@cardiopilates.cl</span>
+                        <div class="contacto-item">
+                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                            <span>informaciones@cardiopilates.cl</span>
                         </div>
                     </div>
                     <div class="footer-apps">
@@ -1106,7 +1842,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2024 CardioPilates. Todos los derechos reservados.
+                <span>&copy; 2024 CardioPilates. Todos los derechos reservados.</span>
+                <span>Wellness & Fitness Center — Las Condes, Santiago</span>
             </div>
         </div>
     </footer>
@@ -1119,10 +1856,10 @@
 
     <!-- ═══ JAVASCRIPT ═══ -->
     <script>
-        // ── Navbar scroll effect ──
+        // ── Navbar scroll ──
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
         });
 
         // ── Mobile menu ──
@@ -1136,49 +1873,57 @@
             navOverlay.classList.toggle('active');
             document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
         }
-
         hamburger.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
-
-        // Close menu on link click
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinks.classList.contains('open')) toggleMenu();
             });
         });
 
-        // ── Scroll reveal ──
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+        // ── Scroll reveal (IntersectionObserver) ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                    revealObserver.unobserve(entry.target);
+                    const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+                    let delay = 0;
+                    siblings.forEach(sib => {
+                        if (sib.getBoundingClientRect().top < window.innerHeight) {
+                            setTimeout(() => sib.classList.add('visible'), delay);
+                            delay += 80;
+                        }
+                    });
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
-        revealElements.forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // ── Form submit ──
         function handleFormSubmit(e) {
             e.preventDefault();
-            const form = e.target;
-            const nombre = form.nombre.value;
-            alert(`¡Gracias ${nombre}! 🎉\n\nHemos recibido tu solicitud. Te contactaremos pronto para agendar tu clase gratis en CardioPilates Apoquindo.`);
-            form.reset();
+            const f = e.target;
+            const nombre = f.nombre.value;
+            const sede = f.sede.value === 'apoquindo' ? 'Apoquindo 4700' : 'Badajoz 127';
+            alert(`¡Gracias ${nombre}!\n\nHemos recibido tu solicitud para una clase gratis en la sede ${sede}.\n\nTe contactaremos dentro de las próximas 24 horas para coordinar tu sesión.`);
+            f.reset();
             return false;
         }
 
-        // ── Smooth scroll for anchor links ──
+        // ── Sede tabs (visual only) ──
+        function switchSede(btn, sede) {
+            document.querySelectorAll('.planes-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // ── Smooth scroll ──
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     e.preventDefault();
-                    const offset = 80;
+                    const offset = 70;
                     const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
                     window.scrollTo({ top, behavior: 'smooth' });
                 }

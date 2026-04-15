@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioPilates Badajoz 127 — Wellness & Fitness Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --rosa:#d6336c;--rosa-dark:#b52b5a;--rosa-light:#e8638b;
+            --rosa-glow:rgba(214,51,108,.25);
+            --dark:#1a1a2e;--dark-mid:#16213e;--white:#fff;
+            --gray-100:#f4f4f8;--gray-200:#e8e8ee;--gray-400:#9e9eb8;--gray-600:#5a5a72;
+            --gold:#d4a853;
+            --shadow:0 8px 30px rgba(0,0,0,.08);--shadow-lg:0 20px 60px rgba(0,0,0,.1);
+            --radius:12px;--radius-lg:20px;
+            --transition:all .35s cubic-bezier(.4,0,.2,1);
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Montserrat',sans-serif;color:var(--dark);line-height:1.65;overflow-x:hidden;background:var(--white);-webkit-font-smoothing:antialiased}
+        a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;display:block}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .container-wide{max-width:1400px;margin:0 auto;padding:0 24px}
+        section{padding:100px 0}
+        .section-header{text-align:center;margin-bottom:64px}
+        .section-label{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--rosa);margin-bottom:12px}
+        .section-header h2{font-size:2.4rem;font-weight:800;margin-bottom:14px;line-height:1.2}
+        .section-header p{font-size:1rem;color:var(--gray-600);max-width:540px;margin:0 auto}
+        .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--rosa);color:var(--white);padding:14px 34px;border-radius:50px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;border:none;cursor:pointer;transition:var(--transition)}
+        .btn-primary:hover{background:var(--rosa-dark);transform:translateY(-2px);box-shadow:0 8px 25px var(--rosa-glow)}
+        .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--rosa);padding:14px 34px;border-radius:50px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;border:2px solid var(--rosa);cursor:pointer;transition:var(--transition)}
+        .btn-outline:hover{background:var(--rosa);color:var(--white);transform:translateY(-2px)}
+
+        /* ═══ NAVBAR ═══ */
+        .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 0;transition:var(--transition)}
+        .navbar.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,0,0,.08);padding:10px 0}
+        .navbar .container{display:flex;align-items:center;justify-content:space-between}
+        .navbar .logo-img{height:38px;filter:brightness(0) invert(1);transition:var(--transition)}
+        .navbar.scrolled .logo-img{filter:none}
+        .nav-links{display:flex;align-items:center;gap:24px}
+        .nav-links a{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.9);transition:var(--transition);padding:4px 0;position:relative}
+        .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--rosa);transition:var(--transition)}
+        .nav-links a:hover::after{width:100%}
+        .navbar.scrolled .nav-links a{color:var(--dark)}
+        .navbar.scrolled .nav-links a:hover{color:var(--rosa)}
+        .btn-cta-nav{background:var(--rosa)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:50px!important;border:2px solid var(--rosa)}
+        .btn-cta-nav::after{display:none!important}
+        .btn-cta-nav:hover{background:var(--rosa-dark)!important;transform:translateY(-2px);box-shadow:0 6px 20px var(--rosa-glow)}
+        .back-link{color:rgba(255,255,255,.7)!important;font-size:.7rem!important}
+        .back-link:hover{color:var(--white)!important}
+        .navbar.scrolled .back-link{color:var(--gray-600)!important}
+        .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;padding:4px}
+        .hamburger span{width:26px;height:2.5px;background:var(--white);border-radius:2px;transition:var(--transition)}
+        .navbar.scrolled .hamburger span{background:var(--dark)}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+        /* ═══ HERO ═══ */
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0}
+        .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1920&q=80') center/cover no-repeat}
+        .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(214,51,108,.65),rgba(26,26,46,.85))}
+        .hero-content{position:relative;z-index:2;text-align:center;max-width:780px;padding:0 24px;animation:fadeUp 1s ease forwards}
+        .hero-content .sede-badge{display:inline-block;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);padding:8px 20px;border-radius:50px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--white);margin-bottom:24px;border:1px solid rgba(255,255,255,.15)}
+        .hero-content h1{font-size:3.4rem;font-weight:800;color:var(--white);line-height:1.12;margin-bottom:20px}
+        .hero-content h1 em{font-style:normal;color:var(--rosa-light)}
+        .hero-content p{font-size:1.2rem;color:rgba(255,255,255,.8);margin-bottom:36px;font-weight:300}
+        .hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+        .btn-hero-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);padding:14px 34px;border-radius:50px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;border:2px solid rgba(255,255,255,.4);cursor:pointer;transition:var(--transition)}
+        .btn-hero-secondary:hover{border-color:var(--white);background:rgba(255,255,255,.1);transform:translateY(-3px)}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+        /* ═══ BENEFICIOS ═══ */
+        .beneficios{background:var(--white)}
+        .beneficios-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+        .b-card{background:var(--gray-100);border-radius:var(--radius);padding:36px 22px;text-align:center;transition:var(--transition);border:1px solid transparent;opacity:0;transform:translateY(30px)}
+        .b-card.visible{opacity:1;transform:translateY(0)}
+        .b-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);background:var(--white);border-color:var(--gray-200)}
+        .b-card .ic{width:60px;height:60px;background:var(--rosa);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.3rem;color:var(--white);transition:var(--transition)}
+        .b-card:hover .ic{border-radius:50%;transform:scale(1.1)}
+        .b-card h3{font-size:.9rem;font-weight:700;margin-bottom:8px}
+        .b-card p{font-size:.82rem;color:var(--gray-600);line-height:1.55}
+
+        /* ═══ ACTIVIDADES ═══ */
+        .actividades{background:var(--gray-100)}
+        .act-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+        .act-item{background:var(--white);border-radius:var(--radius);padding:28px 12px;text-align:center;transition:var(--transition);border:1px solid transparent;opacity:0;transform:translateY(20px)}
+        .act-item.visible{opacity:1;transform:translateY(0)}
+        .act-item:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--rosa)}
+        .act-item i{font-size:1.5rem;color:var(--rosa);margin-bottom:10px;transition:var(--transition)}
+        .act-item:hover i{transform:scale(1.15)}
+        .act-item h4{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+
+        /* ═══ INSTAGRAM ═══ */
+        .instagram{background:var(--dark);color:var(--white);padding:80px 0;overflow:hidden}
+        .instagram .section-header h2{color:var(--white)}
+        .instagram .section-header p{color:var(--gray-400)}
+        .ig-banner{display:flex;align-items:center;gap:48px;max-width:1000px;margin:0 auto}
+        .ig-video{flex:0 0 340px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:9/16;max-height:600px;background:#000}
+        .ig-video iframe{width:100%;height:100%;border:none}
+        .ig-cta{flex:1}
+        .ig-cta h3{font-size:1.8rem;font-weight:800;margin-bottom:14px;line-height:1.2}
+        .ig-cta h3 em{font-style:normal;color:var(--rosa-light)}
+        .ig-cta p{color:var(--gray-400);font-size:.95rem;margin-bottom:28px;line-height:1.7}
+        .ig-btns{display:flex;gap:12px;flex-wrap:wrap}
+        .s-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:50px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:var(--transition);border:none;cursor:pointer;color:var(--white)}
+        .s-btn.ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+        .s-btn.fb{background:#1877f2}
+        .s-btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.3)}
+
+        /* ═══ PLANES ═══ */
+        .planes{background:var(--gray-100)}
+        .planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .p-card{background:var(--white);border-radius:var(--radius-lg);padding:36px 26px;text-align:center;position:relative;transition:var(--transition);border:1px solid var(--gray-200);opacity:0;transform:translateY(30px)}
+        .p-card.visible{opacity:1;transform:translateY(0)}
+        .p-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+        .p-card.featured{border:2px solid var(--rosa);box-shadow:0 8px 40px var(--rosa-glow)}
+        .p-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--rosa);color:var(--white);padding:5px 18px;border-radius:50px;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+        .p-badge.gold{background:linear-gradient(135deg,var(--gold),#c4943f)}
+        .p-icon{width:46px;height:46px;background:var(--gray-100);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.1rem;color:var(--rosa)}
+        .p-card.featured .p-icon{background:linear-gradient(135deg,var(--rosa),var(--rosa-light));color:var(--white)}
+        .p-card h3{font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+        .p-dur{font-size:.72rem;color:var(--gray-400);font-weight:500;text-transform:uppercase;letter-spacing:1px}
+        .p-price{font-size:2.2rem;font-weight:900;color:var(--dark);margin:14px 0 4px;line-height:1}
+        .p-old{font-size:.82rem;color:var(--gray-400);text-decoration:line-through;margin-bottom:14px}
+        .p-features{text-align:left;margin:18px 0 24px;border-top:1px solid var(--gray-200);padding-top:18px}
+        .p-features li{padding:5px 0;font-size:.8rem;color:var(--gray-600);display:flex;align-items:flex-start;gap:10px}
+        .p-features li i{color:var(--rosa);margin-top:3px;flex-shrink:0;font-size:.65rem}
+        .p-card .btn-primary,.p-card .btn-outline{width:100%;justify-content:center;padding:12px 24px;font-size:.76rem}
+        .planes-footer{text-align:center;margin-top:36px}
+        .planes-footer p{font-size:.82rem;color:var(--gray-600);margin-bottom:6px}
+        .planes-footer p i{color:var(--rosa);margin-right:6px}
+
+        /* ═══ TESTIMONIOS ═══ */
+        .testimonios{background:var(--white)}
+        .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .t-card{background:var(--gray-100);border-radius:var(--radius-lg);padding:36px 28px;transition:var(--transition);border:1px solid var(--gray-200);position:relative;opacity:0;transform:translateY(30px)}
+        .t-card.visible{opacity:1;transform:translateY(0)}
+        .t-card:hover{box-shadow:var(--shadow);border-color:transparent}
+        .t-card .qm{font-size:4rem;color:var(--rosa);opacity:.12;font-family:Georgia,serif;line-height:1;position:absolute;top:14px;right:24px}
+        .t-card p{font-size:.9rem;color:var(--gray-600);line-height:1.75;margin-bottom:22px}
+        .t-footer{display:flex;align-items:center;gap:14px}
+        .t-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--rosa),var(--rosa-light));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:.85rem;flex-shrink:0}
+        .t-info h4{font-size:.88rem;font-weight:700}
+        .t-stars{color:#f5a623;font-size:.72rem;margin-top:2px}
+
+        /* ═══ HORARIOS ═══ */
+        .horarios{background:var(--gray-100)}
+        .hor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+        .hor-info{opacity:0;transform:translateX(-30px);transition:all .6s ease}
+        .hor-info.visible{opacity:1;transform:translateX(0)}
+        .hor-tabla{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:28px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+        .hor-header{background:var(--dark);color:var(--white);padding:18px 28px;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:10px}
+        .hor-row{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;border-bottom:1px solid var(--gray-200);font-size:.88rem}
+        .hor-row:last-child{border-bottom:none}
+        .hor-row .dia{font-weight:700}
+        .hor-row .hora{color:var(--rosa);font-weight:700;font-size:.85rem}
+        .c-direct .c-item{display:flex;align-items:center;gap:14px;margin-bottom:14px;font-size:.88rem;color:var(--gray-600)}
+        .c-item .ci{width:38px;height:38px;background:var(--gray-100);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--rosa);flex-shrink:0;font-size:.8rem}
+        .map-box{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);height:100%;min-height:420px;opacity:0;transform:translateX(30px);transition:all .6s ease}
+        .map-box.visible{opacity:1;transform:translateX(0)}
+        .map-box iframe{width:100%;height:100%;min-height:420px;border:none}
+
+        /* ═══ CONTACTO ═══ */
+        .contacto{background:linear-gradient(135deg,var(--dark),var(--dark-mid));color:var(--white);position:relative;overflow:hidden}
+        .contacto::before{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--rosa-glow),transparent 70%);border-radius:50%}
+        .contacto .section-header h2{color:var(--white)}
+        .contacto .section-header p{color:var(--gray-400)}
+        .form-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;position:relative}
+        .form-info h3{font-size:1.4rem;font-weight:800;margin-bottom:14px}
+        .form-info>p{color:var(--gray-400);font-size:.92rem;margin-bottom:28px;line-height:1.7}
+        .form-info .fi-items{display:flex;flex-direction:column;gap:18px}
+        .fi-row{display:flex;align-items:center;gap:14px}
+        .fi-row .fic{width:44px;height:44px;background:rgba(214,51,108,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--rosa-light);flex-shrink:0}
+        .fi-row .fi-text{font-size:.82rem;color:var(--gray-400)}
+        .fi-row .fi-text strong{display:block;color:var(--white);font-size:.88rem;margin-bottom:2px}
+        .c-form{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:36px;backdrop-filter:blur(10px)}
+        .fg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .f-group label{display:block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;color:var(--gray-400)}
+        .f-group input,.f-group select,.f-group textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);color:var(--white);font-family:'Montserrat',sans-serif;font-size:.88rem;outline:none;transition:var(--transition)}
+        .f-group input::placeholder,.f-group textarea::placeholder{color:rgba(255,255,255,.3)}
+        .f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--rosa);box-shadow:0 0 0 3px var(--rosa-glow)}
+        .f-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+        .f-group select option{background:var(--dark);color:var(--white)}
+        .f-group textarea{min-height:90px;resize:vertical}
+        .fw{grid-column:1/-1}
+        .c-form .btn-primary{width:100%;justify-content:center;margin-top:8px;padding:15px}
+
+        /* ═══ FOOTER ═══ */
+        .footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.6);padding:56px 0 24px}
+        .f-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
+        .f-brand .logo-img{height:32px;filter:brightness(0) invert(1);margin-bottom:10px}
+        .f-brand .slogan{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;opacity:.5;margin-bottom:16px}
+        .f-brand p{font-size:.82rem;line-height:1.7;margin-bottom:16px}
+        .f-social{display:flex;gap:10px}
+        .f-social a{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:.85rem;transition:var(--transition)}
+        .f-social a:hover{background:var(--rosa);transform:translateY(-3px)}
+        .footer h4{color:var(--white);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+        .f-links a{display:block;padding:4px 0;font-size:.82rem;transition:var(--transition)}
+        .f-links a:hover{color:var(--rosa-light);padding-left:4px}
+        .f-contact .c-item{margin-bottom:12px}
+        .f-apps{display:flex;gap:10px;margin-top:16px}
+        .f-apps a{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);padding:10px 16px;border-radius:10px;font-size:.76rem;color:var(--white);font-weight:500;transition:var(--transition)}
+        .f-apps a:hover{background:rgba(255,255,255,.15);transform:translateY(-2px)}
+        .f-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;opacity:.5}
+
+        /* ═══ WHATSAPP ═══ */
+        .wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:58px;height:58px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:var(--transition)}
+        .wa-float:hover{transform:scale(1.1) translateY(-2px)}
+        .wa-float i{color:var(--white);font-size:1.7rem}
+
+        /* ═══ RESPONSIVE ═══ */
+        @media(max-width:1024px){
+            .beneficios-grid{grid-template-columns:repeat(2,1fr)}
+            .planes-grid{grid-template-columns:repeat(2,1fr)}
+            .act-grid{grid-template-columns:repeat(4,1fr)}
+            .f-grid{grid-template-columns:repeat(2,1fr)}
+        }
+        @media(max-width:768px){
+            section{padding:72px 0}
+            .hamburger{display:flex}
+            .nav-links{position:fixed;top:0;right:-100%;width:85%;max-width:340px;height:100vh;background:var(--dark);flex-direction:column;padding:100px 32px 40px;gap:20px;transition:var(--transition);box-shadow:-10px 0 40px rgba(0,0,0,.4)}
+            .nav-links.open{right:0}
+            .nav-links a{color:rgba(255,255,255,.85)!important;font-size:.9rem}
+            .hero-content h1{font-size:2.2rem}
+            .section-header h2{font-size:1.8rem}
+            .planes-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+            .test-grid{grid-template-columns:1fr}
+            .hor-wrap{grid-template-columns:1fr}
+            .map-box{min-height:300px}
+            .ig-banner{flex-direction:column;text-align:center}
+            .ig-video{flex:0 0 auto;max-width:280px;margin:0 auto}
+            .ig-cta{text-align:center}
+            .ig-btns{justify-content:center}
+            .form-wrap{grid-template-columns:1fr;gap:40px}
+            .fg{grid-template-columns:1fr}
+            .f-grid{grid-template-columns:1fr;gap:28px}
+            .f-bottom{flex-direction:column;gap:6px;text-align:center}
+        }
+        @media(max-width:480px){
+            .beneficios-grid{grid-template-columns:1fr}
+            .act-grid{grid-template-columns:repeat(3,1fr)}
+            .hero-content h1{font-size:1.9rem}
+            .p-price{font-size:1.9rem}
+            .c-form{padding:24px}
+        }
+        .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;opacity:0;visibility:hidden;transition:var(--transition)}
+        .nav-overlay.active{opacity:1;visibility:visible}
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html"><img src="https://www.cardiopilates.cl/wp-content/uploads/2019/05/logo-big.png" alt="CardioPilates" class="logo-img"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Sedes</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#planes">Tarifas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contacto" class="btn-cta-nav">Clase Gratis</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="sede-badge"><i class="fas fa-location-dot"></i>&nbsp; Sede Badajoz 127</div>
+            <h1>Transforma tu cuerpo, <em>eleva tu bienestar</em></h1>
+            <p>Pilates, cardio y más en Badajoz 127, Las Condes — primera clase gratis</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn-primary"><i class="fas fa-calendar-check"></i> Reserva tu clase gratis</a>
+                <a href="#planes" class="btn-hero-secondary"><i class="fas fa-tag"></i> Ver planes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="beneficios" id="beneficios">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Por qué elegirnos</div>
+                <h2>Tu bienestar es nuestra prioridad</h2>
+                <p>Más que un gimnasio, somos tu espacio de transformación</p>
+            </div>
+            <div class="beneficios-grid">
+                <div class="b-card reveal"><div class="ic"><i class="fas fa-award"></i></div><h3>Instructoras certificadas</h3><p>Profesionales con certificaciones internacionales en cada disciplina.</p></div>
+                <div class="b-card reveal"><div class="ic"><i class="fas fa-layer-group"></i></div><h3>+10 disciplinas</h3><p>Desde Pilates y Yoga hasta Body Combat y Spinning.</p></div>
+                <div class="b-card reveal"><div class="ic"><i class="fas fa-users"></i></div><h3>Todos los niveles</h3><p>Clases para principiantes, intermedios y avanzados.</p></div>
+                <div class="b-card reveal"><div class="ic"><i class="fas fa-gift"></i></div><h3>Primera clase gratis</h3><p>Ven a conocernos sin compromiso. Tu primera sesión es gratuita.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVIDADES -->
+    <section class="actividades" id="actividades">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Disciplinas</div>
+                <h2>Nuestras actividades</h2>
+                <p>Descubre todas las opciones disponibles en esta sede</p>
+            </div>
+            <div class="act-grid">
+                <div class="act-item reveal"><i class="fas fa-spa"></i><h4>Pilates</h4></div>
+                <div class="act-item reveal"><i class="fas fa-music"></i><h4>Baile</h4></div>
+                <div class="act-item reveal"><i class="fas fa-dumbbell"></i><h4>Body Pump</h4></div>
+                <div class="act-item reveal"><i class="fas fa-hand-fist"></i><h4>Body Combat</h4></div>
+                <div class="act-item reveal"><i class="fas fa-arrow-up"></i><h4>Power Jump</h4></div>
+                <div class="act-item reveal"><i class="fas fa-mitten"></i><h4>Box</h4></div>
+                <div class="act-item reveal"><i class="fas fa-person-running"></i><h4>Funcional</h4></div>
+                <div class="act-item reveal"><i class="fas fa-fire"></i><h4>GAP</h4></div>
+                <div class="act-item reveal"><i class="fas fa-hand-back-fist"></i><h4>Kick Boxing</h4></div>
+                <div class="act-item reveal"><i class="fas fa-bicycle"></i><h4>Spinning</h4></div>
+                <div class="act-item reveal"><i class="fas fa-grip-lines"></i><h4>TRX</h4></div>
+                <div class="act-item reveal"><i class="fas fa-om"></i><h4>Yoga</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section class="instagram" id="social">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Síguenos</div>
+                <h2>Nuestra comunidad en redes</h2>
+                <p>Conoce el día a día de CardioPilates</p>
+            </div>
+            <div class="ig-banner">
+                <div class="ig-video">
+                    <iframe src="https://www.instagram.com/reel/DGg0-oWuqT0/embed/" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="ig-cta">
+                    <h3>Únete a nuestra <em>comunidad fitness</em></h3>
+                    <p>Mira nuestras rutinas, tips de bienestar, historias de transformación y todo lo que pasa en nuestras sedes.</p>
+                    <div class="ig-btns">
+                        <a href="https://www.instagram.com/cardiopilates/" target="_blank" class="s-btn ig"><i class="fab fa-instagram"></i> @cardiopilates</a>
+                        <a href="https://www.facebook.com/Centro.CardioPilates/" target="_blank" class="s-btn fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANES -->
+    <section class="planes" id="planes">
+        <div class="container-wide">
+            <div class="section-header">
+                <div class="section-label">Tarifas — Sede Badajoz</div>
+                <h2>Elige tu plan ideal</h2>
+                <p>Todos incluyen acceso a actividades complementarias</p>
+            </div>
+            <div class="planes-grid">
+                <div class="p-card reveal">
+                    <div class="p-icon"><i class="fas fa-calendar-day"></i></div>
+                    <h3>Mensual Pilates Full</h3><div class="p-dur">30 días</div>
+                    <div class="p-price">$110.000</div><div class="p-old">+ Matrícula $50.000 (Total $160.000)</div>
+                    <ul class="p-features">
+                        <li><i class="fas fa-circle"></i> 12 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 6 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-circle"></i> Box, TRX, Funcional, Baile, Yoga y más</li>
+                    </ul>
+                    <a href="#contacto" class="btn-outline">Comprar</a>
+                </div>
+                <div class="p-card reveal">
+                    <div class="p-icon"><i class="fas fa-calendar-week"></i></div>
+                    <h3>Trimestral Pilates Full</h3><div class="p-dur">90 días</div>
+                    <div class="p-price">$270.000</div><div class="p-old">&nbsp;</div>
+                    <ul class="p-features">
+                        <li><i class="fas fa-circle"></i> 32 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 20 sesiones actividades complementarias</li>
+                        <li><i class="fas fa-circle"></i> Funcional, Yoga, GAP, Body Pump y más</li>
+                    </ul>
+                    <a href="#contacto" class="btn-outline">Comprar</a>
+                </div>
+                <div class="p-card reveal">
+                    <div class="p-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Semestral Multisede</h3><div class="p-dur">180 días</div>
+                    <div class="p-price">$359.000</div><div class="p-old">Precio lista $439.000</div>
+                    <ul class="p-features">
+                        <li><i class="fas fa-circle"></i> 62 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 36 sesiones complementarias</li>
+                        <li><i class="fas fa-circle"></i> Acceso a ambas sedes</li>
+                        <li><i class="fas fa-circle"></i> Sala cardiovascular incluida</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+                <div class="p-card reveal">
+                    <div class="p-badge">Mejor precio</div>
+                    <div class="p-icon"><i class="fas fa-calendar"></i></div>
+                    <h3>Anual Multisede</h3><div class="p-dur">365 días</div>
+                    <div class="p-price">$409.000</div><div class="p-old">Precio lista $599.000</div>
+                    <ul class="p-features">
+                        <li><i class="fas fa-circle"></i> 124 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 72 sesiones complementarias</li>
+                        <li><i class="fas fa-circle"></i> Acceso a ambas sedes</li>
+                        <li><i class="fas fa-circle"></i> Body Combat, Box, Spinning, TRX y más</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+                <div class="p-card featured reveal">
+                    <div class="p-badge gold"><i class="fas fa-crown"></i>&nbsp; Premium</div>
+                    <div class="p-icon"><i class="fas fa-gem"></i></div>
+                    <h3>VIP CardioPilates</h3><div class="p-dur">365 días</div>
+                    <div class="p-price">$690.000</div><div class="p-old">&nbsp;</div>
+                    <ul class="p-features">
+                        <li><i class="fas fa-circle"></i> 288 sesiones de Pilates</li>
+                        <li><i class="fas fa-circle"></i> 144 sesiones complementarias</li>
+                        <li><i class="fas fa-circle"></i> 45 días de congelamiento</li>
+                        <li><i class="fas fa-circle"></i> Acceso completo ilimitado</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+                <div class="p-card reveal">
+                    <div class="p-badge">Más popular</div>
+                    <div class="p-icon"><i class="fas fa-user-group"></i></div>
+                    <h3>Plan Dúo</h3><div class="p-dur">365 días — 2 personas</div>
+                    <div class="p-price">$858.000</div><div class="p-old">Precio lista $978.000</div>
+                    <ul class="p-features">
+                        <li><i class="fas fa-circle"></i> 124 sesiones Pilates por persona</li>
+                        <li><i class="fas fa-circle"></i> 72 sesiones complementarias c/u</li>
+                        <li><i class="fas fa-circle"></i> 30 días congelamiento</li>
+                        <li><i class="fas fa-circle"></i> Entrena con tu amiga o pareja</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary">Comprar</a>
+                </div>
+            </div>
+            <div class="planes-footer">
+                <p><i class="fas fa-credit-card"></i> Pago hasta en 12 cuotas sin interés con MercadoPago</p>
+                <p><i class="fas fa-exchange-alt"></i> También aceptamos transferencia bancaria y efectivo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonios" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Testimonios</div>
+                <h2>Lo que dicen nuestras alumnas</h2>
+                <p>Historias reales de transformación y bienestar</p>
+            </div>
+            <div class="test-grid">
+                <div class="t-card reveal"><div class="qm">"</div><p>CardioPilates Badajoz es mi segundo hogar. El ambiente es espectacular y las profes te motivan a dar lo mejor de ti cada clase.</p><div class="t-footer"><div class="t-avatar">AF</div><div class="t-info"><h4>Andrea Fuentes</h4><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div>
+                <div class="t-card reveal"><div class="qm">"</div><p>Vine por el Pilates y me quedé por el Spinning y Body Combat. La sede Badajoz tiene todo lo que necesito y queda cerca de mi oficina.</p><div class="t-footer"><div class="t-avatar">LC</div><div class="t-info"><h4>Lorena Castro</h4><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div>
+                <div class="t-card reveal"><div class="qm">"</div><p>El plan VIP fue la mejor decisión. Puedo ir todos los días y combinar diferentes actividades. Las instalaciones están siempre impecables.</p><div class="t-footer"><div class="t-avatar">PM</div><div class="t-info"><h4>Paulina Morales</h4><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIOS + MAPA -->
+    <section class="horarios" id="horarios">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Ubicación</div>
+                <h2>Sede Badajoz</h2>
+                <p>Te esperamos en Badajoz 127, Las Condes</p>
+            </div>
+            <div class="hor-wrap">
+                <div class="hor-info reveal">
+                    <div class="hor-tabla">
+                        <div class="hor-header"><i class="fas fa-clock"></i> Horarios de atención</div>
+                        <div class="hor-row"><span class="dia">Lunes a Jueves</span><span class="hora">6:30 – 22:00</span></div>
+                        <div class="hor-row"><span class="dia">Viernes</span><span class="hora">6:30 – 21:00</span></div>
+                        <div class="hor-row"><span class="dia">Sábado</span><span class="hora">8:30 – 14:00</span></div>
+                    </div>
+                    <div class="c-direct">
+                        <div class="c-item"><div class="ci"><i class="fas fa-location-dot"></i></div><span>Badajoz 127, Las Condes, Santiago</span></div>
+                        <div class="c-item"><div class="ci"><i class="fas fa-phone"></i></div><span>+56 2 2929 9095 | +56 2 2929 7998</span></div>
+                        <div class="c-item"><div class="ci"><i class="fas fa-envelope"></i></div><span>informaciones@cardiopilates.cl</span></div>
+                    </div>
+                </div>
+                <div class="map-box reveal">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.1!2d-70.587!3d-33.407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf1b5e6f5f5f%3A0x5e5e5e5e5e5e5e5e!2sBadajoz+127%2C+Las+Condes!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Contacto</div>
+                <h2>Agenda tu clase gratis</h2>
+                <p>Completa el formulario y te contactaremos para reservar tu sesión</p>
+            </div>
+            <div class="form-wrap">
+                <div class="form-info">
+                    <h3>¿Lista para empezar tu transformación?</h3>
+                    <p>Tu primera clase es completamente gratis y sin compromiso. Nosotras nos encargamos del resto.</p>
+                    <div class="fi-items">
+                        <div class="fi-row"><div class="fic"><i class="fas fa-clock"></i></div><div class="fi-text"><strong>Respuesta rápida</strong>Te contactamos en menos de 24 horas</div></div>
+                        <div class="fi-row"><div class="fic"><i class="fas fa-shield"></i></div><div class="fi-text"><strong>Sin compromiso</strong>Prueba gratis antes de decidir</div></div>
+                        <div class="fi-row"><div class="fic"><i class="fas fa-calendar-check"></i></div><div class="fi-text"><strong>Horario flexible</strong>Elige el horario que más te acomode</div></div>
+                    </div>
+                </div>
+                <form class="c-form" id="formClase" onsubmit="return handleForm(event)">
+                    <div class="fg">
+                        <div class="f-group"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required></div>
+                        <div class="f-group"><label>Apellido</label><input type="text" name="apellido" placeholder="Tu apellido" required></div>
+                        <div class="f-group"><label>Email</label><input type="email" name="email" placeholder="tu@email.com" required></div>
+                        <div class="f-group"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+56 9 1234 5678" required></div>
+                        <div class="f-group"><label>Actividad de interés</label>
+                            <select name="actividad">
+                                <option value="" disabled selected>Selecciona una actividad</option>
+                                <option>Pilates</option><option>Yoga</option><option>Baile</option>
+                                <option>Body Pump</option><option>Body Combat</option><option>Spinning</option>
+                                <option>Funcional</option><option>Box</option><option>TRX</option>
+                                <option>GAP</option><option>Kick Boxing</option><option>Power Jump</option>
+                            </select>
+                        </div>
+                        <div class="f-group"><label>Horario preferido</label>
+                            <select name="horario">
+                                <option value="" disabled selected>Selecciona un horario</option>
+                                <option>Mañana (6:30 - 12:00)</option>
+                                <option>Tarde (12:00 - 18:00)</option>
+                                <option>Noche (18:00 - 22:00)</option>
+                            </select>
+                        </div>
+                        <div class="f-group fw"><label>Mensaje (opcional)</label><textarea name="mensaje" placeholder="¿Alguna consulta adicional?"></textarea></div>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Quiero mi clase gratis</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="f-grid">
+                <div class="f-brand">
+                    <img src="https://www.cardiopilates.cl/wp-content/uploads/2019/05/logo-big.png" alt="CardioPilates" class="logo-img">
+                    <p class="slogan">Wellness & Fitness Center</p>
+                    <p>Más de 10 disciplinas para tu bienestar. Dos sedes en Las Condes.</p>
+                    <div class="f-social">
+                        <a href="https://www.instagram.com/cardiopilates/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/Centro.CardioPilates/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Navegación</h4>
+                    <div class="f-links">
+                        <a href="#inicio">Inicio</a><a href="#actividades">Actividades</a>
+                        <a href="#horarios">Horarios</a><a href="#planes">Tarifas</a>
+                        <a href="#contacto">Contacto</a><a href="index.html">Cambiar sede</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Actividades</h4>
+                    <div class="f-links">
+                        <a href="#actividades">Pilates</a><a href="#actividades">Yoga</a>
+                        <a href="#actividades">Spinning</a><a href="#actividades">Body Combat</a>
+                        <a href="#actividades">Funcional</a><a href="#actividades">TRX</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <div class="f-contact">
+                        <div class="c-item"><div class="ci"><i class="fas fa-location-dot"></i></div><span>Badajoz 127, Las Condes</span></div>
+                        <div class="c-item"><div class="ci"><i class="fas fa-phone"></i></div><span>+56 2 2929 9095</span></div>
+                        <div class="c-item"><div class="ci"><i class="fas fa-envelope"></i></div><span>informaciones@cardiopilates.cl</span></div>
+                    </div>
+                    <div class="f-apps">
+                        <a href="#"><i class="fab fa-apple"></i> App Store</a>
+                        <a href="#"><i class="fab fa-google-play"></i> Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <div class="f-bottom">
+                <span>&copy; 2024 CardioPilates. Todos los derechos reservados.</span>
+                <span>Wellness & Fitness Center — Las Condes, Santiago</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/56229299095?text=Hola,%20quiero%20información%20sobre%20los%20planes%20en%20Badajoz" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        const navbar=document.getElementById('navbar');
+        window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));
+        const hamburger=document.getElementById('hamburger'),navLinks=document.getElementById('navLinks'),navOverlay=document.getElementById('navOverlay');
+        function toggleMenu(){hamburger.classList.toggle('active');navLinks.classList.toggle('open');navOverlay.classList.toggle('active');document.body.style.overflow=navLinks.classList.contains('open')?'hidden':''}
+        hamburger.addEventListener('click',toggleMenu);navOverlay.addEventListener('click',toggleMenu);
+        navLinks.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{if(navLinks.classList.contains('open'))toggleMenu()}));
+        const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const sibs=e.target.parentElement.querySelectorAll('.reveal');let d=0;sibs.forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight){setTimeout(()=>s.classList.add('visible'),d);d+=80}});obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+        function handleForm(e){e.preventDefault();const f=e.target;alert(`¡Gracias ${f.nombre.value}!\n\nHemos recibido tu solicitud para una clase gratis en Badajoz 127.\n\nTe contactaremos dentro de las próximas 24 horas.`);f.reset();return false}
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-70,behavior:'smooth'})}})});
+    </script>
+</body>
+</html>
